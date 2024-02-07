@@ -1,6 +1,6 @@
 import Job from "../Job/Class/Job";
 import util from 'util';
-var clc = require('cli-color');
+import clc from "cli-color";
 
 class Hero {
     name: string;
