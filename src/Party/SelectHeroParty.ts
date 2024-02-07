@@ -1,7 +1,7 @@
 import Hero from "../Hero/Hero";
 import Party from "./Party";
 
-function SelectHeroParty(party: Party, position: number): Hero | null {
+function selectHeroParty(party: Party, position: number): Hero | null {
     if (party[position] !== undefined) {
         return party[position].hero;
     } else {
@@ -10,4 +10,4 @@ function SelectHeroParty(party: Party, position: number): Hero | null {
     }
 }
 
-export default SelectHeroParty;
+export default selectHeroParty;
