@@ -7,6 +7,7 @@ import displayQuitMessage from '../Misc/displayQuitMessage';
 // functions
 import innMenu from './innMenu';
 import partyMenu from './partyMenu';
+import singleCombatScene from '../Scenes/singleCombatScene';
 
 /**
  * 
@@ -26,6 +27,7 @@ async function mainMenu(game: Game) : Promise<boolean> {
             name: 'menu',
             message: 'What would you like to do?',
             choices: [
+                'Go to Single Battle',
                 'Go to Dungeon Selection' + clc.red(' (Not Implemented) '),
                 'Go to the Inn',
                 'Go to the Shop' + clc.red(' (Not Implemented) '),
@@ -41,29 +43,20 @@ async function mainMenu(game: Game) : Promise<boolean> {
         let answer: {menu: string} = await prompt(questions);
 
         switch (answer.menu) {
-            case 'Go to Dungeon Selection':
-                console.log('Going to Dungeon Selection');
-                return true;
+            case 'Go to Single Battle':
+                let is_dead: boolean = await singleCombatScene(game.Party)
+                return is_dead;
             case 'Go to the Inn':
                 await innMenu(game)
                 return false;
-            case 'Go to the Shop (not implemented)':
-                console.log('Going to the Shop');
-                return true;
-            case 'View Inventory (not implemented)':
-                console.log('Viewing Inventory');
-                return true;
             case 'View Party':
                 await partyMenu(game.Party);
                 return false;
-            case 'Save Menu (not implemented)':
-                console.log('Save Menu');
-                return true;
             case 'Quit':
                 displayQuitMessage();
                 return true;
             default:
-                console.log('Invalid Choice');
+                console.log(clc.red('Not implemented yet'));
                 return true;
         }
     } catch (error) {
