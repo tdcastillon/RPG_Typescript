@@ -6,15 +6,15 @@ import GameLoop from "./Game/GameLoop";
 
 const main = async () => {
     const game: Game = {
-        Party: [],
+        Party: {
+            length: 0
+        },
         Reservees: [],
         GroupInventory: [],
         money: 0
     };
 
     addHeroParty(await StartJourney(), game.Party);
-
-    console.log(game.Party);
 
     GameLoop(game);
 
