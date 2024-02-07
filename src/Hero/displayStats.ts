@@ -1,6 +1,8 @@
 import clc from "cli-color";
 import Hero from "./Hero";
 import { prompt } from "enquirer";
+import pressContinue from "../Misc/pressContinue";
+import Stats from "../Stats/Stats";
 
 /**
  *
@@ -51,20 +53,12 @@ async function displayStats(hero: Hero): Promise<void> {
   );
 
   console.log("\n/--------STATS--------\\");
-  console.log("ATK: " + clc.redBright(hero._job.getStats("ATK")));
-  console.log("DEF: " + clc.redBright(hero._job.getStats("DEF")));
-  console.log("MAT: " + clc.redBright(hero._job.getStats("MAT")));
-  console.log("MDF: " + clc.redBright(hero._job.getStats("MDF")));
+  const stats_to_display: Array<keyof Stats> = ["ATK", "DEF", "MAT", "MDF"];
+  stats_to_display.forEach((stat) => {
+    console.log(stat + ": " + clc.red(hero._job.getStats(stat)));
+  });
 
-  console.log("Press any key to continue");
-  const questions = [
-    {
-      type: "input",
-      name: "continue",
-      message: "Press any key to continue",
-    },
-  ];
-  let answer: { continue: string } = await prompt(questions);
+  await pressContinue();
   Promise.resolve();
 }
 
