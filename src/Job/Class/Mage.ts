@@ -17,7 +17,6 @@ class Mage extends Job {
       EXP: 0,
       FULL_EXP: 100,
       LVL: 1,
-      points_to_distribute: 0,
     };
 
     super("Mage", initStats, 0.5);

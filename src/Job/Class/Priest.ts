@@ -16,7 +16,6 @@ class Priest extends Job {
             EXP: 0,
             FULL_EXP: 25,
             LVL: 1,
-            points_to_distribute: 0
         };
 
         super("Priest", stats, 0.75);

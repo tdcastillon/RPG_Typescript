@@ -16,7 +16,6 @@ class Warrior extends Job {
             EXP: 0,
             FULL_EXP: 100,
             LVL: 1,
-            points_to_distribute: 0
         };
         super("Warrior", stats, 0.35);
     }

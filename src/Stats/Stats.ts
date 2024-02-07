@@ -12,7 +12,6 @@ class Stats {
     public EXP: number = 0;
     public FULL_EXP: number = 0;
     public LVL: number = 0;
-    private points_to_distribute: number = 0;
 
     constructor(stats: InitStats) {
         Object.assign(this, stats);
@@ -32,7 +31,6 @@ class Stats {
         stats_to_augment.forEach((stat: string) => {
             (this as any)[stat] = Math.floor(based_stats.getProperty(stat as keyof Stats) * (1 + (new_level - 1) * multiplier));
         });
-        this.points_to_distribute += (new_level - 1) * 5;
     }
 }
 
