@@ -10,6 +10,7 @@ interface InitStats {
     EXP: number;
     FULL_EXP: number;
     LVL: number;
+    points_to_distribute: number;
 }
 
 export default InitStats;

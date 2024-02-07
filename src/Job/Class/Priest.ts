@@ -14,11 +14,16 @@ class Priest extends Job {
             MAT: 10,
             MDF: 15,
             EXP: 0,
-            FULL_EXP: 100,
+            FULL_EXP: 25,
             LVL: 1,
+            points_to_distribute: 0
         };
 
-        super("Priest", stats);
+        super("Priest", stats, 0.75);
+    }
+
+    levelUp(new_level: number) {
+        super.levelUp(new_level);
     }
 }
 

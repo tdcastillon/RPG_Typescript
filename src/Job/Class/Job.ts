@@ -18,9 +18,12 @@ class Job {
         LVL: 0,
     } as InitStats);
 
-    constructor(name: string, stats: InitStats) {
+    protected based_stats: Stats = this.stats;
+
+    constructor(name: string, stats: InitStats, private multiplier: number = 0) {
         this.name = name
         this.stats = new Stats(stats);
+        this.based_stats = this.stats;
     }
 
     getName(): string {
@@ -29,6 +32,10 @@ class Job {
 
     getStats(name: keyof Stats): number {
         return this.stats.getProperty(name);
+    }
+
+    levelUp(new_level: number) {
+        this.stats.levelUp(new_level, this.multiplier, this.based_stats);
     }
 }
 
