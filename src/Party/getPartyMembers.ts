@@ -1,5 +1,12 @@
 import Party from "./Party";
 
+/**
+ * 
+ * @param {Party} party - The party to get the members from
+ * @returns {string[]} - The names of the party members
+ * @description This function will return the names of the party members
+ */
+
 function getPartyMembers(party: Party) : string[] {
     try {
         let partyMembers: string[] = [];

@@ -5,6 +5,12 @@ import { prompt } from 'enquirer';
 import BeginHero from "../Interfaces/BeginHero";
 import selectJob from "../Job/Functions/selectJob";
 
+/**
+ * @description This function will start the journey of the hero
+ * @returns {Promise<Hero>}
+ * @async
+ */
+
 async function StartJourney() : Promise<Hero> {
     let prepareHero: BeginHero = {} as BeginHero;
 

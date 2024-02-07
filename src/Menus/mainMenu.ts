@@ -8,6 +8,12 @@ import displayQuitMessage from '../Misc/displayQuitMessage';
 import innMenu from './innMenu';
 import partyMenu from './partyMenu';
 
+/**
+ * 
+ * @param {Game} game - The game to display the main menu for
+ * @returns {Promise<boolean>}
+ * @description This function will display the main menu
+ */
 
 async function mainMenu(game: Game) : Promise<boolean> {
 
