@@ -20,10 +20,6 @@ class Priest extends Job {
 
         super("Priest", stats, 0.75);
     }
-
-    levelUp(new_level: number) {
-        super.levelUp(new_level);
-    }
 }
 
 export default Priest;

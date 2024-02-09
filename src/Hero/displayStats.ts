@@ -15,47 +15,47 @@ async function displayStats(hero: Hero): Promise<void> {
   console.clear();
 
   console.log(
-    clc.blue("Welcome to the Stats for ") + clc.green(hero.name) + clc.blue("!")
+    clc.blue("Welcome to the Stats for ") + clc.green(hero.getName()) + clc.blue("!")
   );
 
   console.log("\n/----------Name----------\\");
-  console.log("Name: " + clc.green(hero.name));
+  console.log("Name: " + clc.green(hero.getName()));
 
   console.log("\n/----------JOB----------\\");
   console.log(
     "Job: " +
       clc.yellow(hero._job.getName()) +
       " Lv. " +
-      clc.red(hero._job.getStats("LVL"))
+      clc.red(hero.getStats().getProperty("LVL"))
   );
 
   console.log("\n/----------EXP----------\\");
   console.log(
     "EXP: " +
-      clc.magenta(hero._job.getStats("EXP")) +
+      clc.magenta(hero.getStats().getProperty("EXP")) +
       "/" +
-      clc.magentaBright(hero._job.getStats("FULL_EXP"))
+      clc.magentaBright(hero.getStats().getProperty("FULL_EXP"))
   );
 
   console.log("\n\n/--------LIFE--------\\");
 
   console.log(
     "HP: " +
-      clc.green(hero._job.getStats("HP")) +
+      clc.green(hero.getStats().getProperty("HP")) +
       "/" +
-      clc.greenBright(hero._job.getStats("MAX_HP"))
+      clc.greenBright(hero.getStats().getProperty("MAX_HP"))
   );
   console.log(
     "MP: " +
-      clc.blue(hero._job.getStats("MP")) +
+      clc.blue(hero.getStats().getProperty("MP")) +
       "/" +
-      clc.blueBright(hero._job.getStats("MAX_MP"))
+      clc.blueBright(hero.getStats().getProperty("MAX_MP"))
   );
 
   console.log("\n/--------STATS--------\\");
   const stats_to_display: Array<keyof Stats> = ["ATK", "DEF", "MAT", "MDF"];
   stats_to_display.forEach((stat) => {
-    console.log(stat + ": " + clc.red(hero._job.getStats(stat)));
+    console.log(stat + ": " + clc.red(hero.getStats().getProperty(stat)));
   });
 
   await pressContinue();

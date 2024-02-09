@@ -11,8 +11,8 @@ function getPartyMembers(party: Party) : string[] {
     try {
         let partyMembers: string[] = [];
         for (let i = 0; i < party.length; i++) {
-            console.log(party[i].hero.name);
-            partyMembers.push(party[i].hero.name);
+            console.log(party[i].hero.getName());
+            partyMembers.push(party[i].hero.getName());
         }
         return partyMembers;
     } catch (error) {

@@ -19,10 +19,6 @@ class Warrior extends Job {
         };
         super("Warrior", stats, 0.35);
     }
-
-    levelUp(new_level: number) {
-        super.levelUp(new_level);
-    }
 }
 
 export default Warrior;

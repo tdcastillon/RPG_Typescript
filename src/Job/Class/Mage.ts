@@ -21,10 +21,6 @@ class Mage extends Job {
 
     super("Mage", initStats, 0.5);
   }
-
-  levelUp(new_level: number) {
-    super.levelUp(new_level);
-  }
 }
 
 export default Mage;

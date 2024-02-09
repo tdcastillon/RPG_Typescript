@@ -36,8 +36,7 @@ async function StartJourney() : Promise<Hero> {
         job: selectJob(_answer2.job)
     };
 
-    return Promise.resolve(new Hero(prepareHero.name, prepareHero.job));
-
+    return new Hero(prepareHero.name, prepareHero.job);
 }
 
 export default StartJourney;

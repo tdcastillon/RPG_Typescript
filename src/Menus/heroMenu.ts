@@ -35,7 +35,7 @@ async function heroMenu(hero: Hero, party: Party): Promise<void> {
 
     console.log(
       clc.blue("Welcome to the Menu for ") +
-        clc.green(hero.name) +
+        clc.green(hero.getName()) +
         clc.blue("!")
     );
 
