@@ -20,8 +20,12 @@ class Enemy extends GameEntity {
         return clc.red(`${this._name}`);
     }
 
+    public createEnemy(stats: InitStats, name: string, multiplier: number = 0.5): Enemy {
+        return new Enemy(stats, name, multiplier);
+    }
+
     [util.inspect.custom](depth: any, options: any) {
-        return clc.red(`${this.getName()}`) + ' of lv ' + clc.red(`${this.getStats().getProperty('LVL')}`);
+        return clc.red(`${this.getName()}`) + ' of lv ' + clc.red(`${this.getStats().getProperty('LVL')}` + (this.getStats().getProperty('HP') <= 0 ? ' (dead)' : String(this.getStats().getProperty('HP'))) + '\n');
     }
 }
 

@@ -1,4 +1,5 @@
 import Enemy from "../Enemy/Class/Enemy";
+import constructEnemy from "../Enemy/Function/constructEnemy";
 import getAvalaibleEnties from "../Enemy/Function/getAvalaibleEntries";
 import DB_Enemy_Entry from "../Enemy/Interface/DB_Enemy_Entry";
 import Party from "../Party/Party";
@@ -18,8 +19,7 @@ async function initSingleFight(party: Party) : Promise<Array<Enemy>> {
     for (let i = 0; i < enemy_party; i++) {
         const enemy_lv: number = Math.floor(Math.random() * (max_lv - min_lv + 1) + min_lv);
         let enemy_entry: DB_Enemy_Entry = avalaible_monsters[Math.floor(Math.random() * avalaible_monsters.length)];
-        let enemy: Enemy = enemy_entry.enemy;
-        enemy.levelUp(enemy_lv);
+        let enemy: Enemy = constructEnemy(enemy_entry, enemy_lv, i);
         enemies.push(enemy);
     }
 
