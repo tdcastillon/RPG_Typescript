@@ -19,6 +19,10 @@ class Hero extends GameEntity {
     public levelUp(new_level: number) {
         this.getStats().levelUp(new_level, this._job.getMultiplier(), this.getBasedStats());
     }
+
+    public getName() : string {
+        return clc.green(`${this._name}`);
+    }
 }
 
 export default Hero;

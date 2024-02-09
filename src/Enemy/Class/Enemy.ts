@@ -16,6 +16,10 @@ class Enemy extends GameEntity {
         this.getStats().levelUp(new_level, this.multiplier, this.getBasedStats());
     }
 
+    public getName() : string {
+        return clc.red(`${this._name}`);
+    }
+
     [util.inspect.custom](depth: any, options: any) {
         return clc.red(`${this.getName()}`) + ' of lv ' + clc.red(`${this.getStats().getProperty('LVL')}`);
     }
