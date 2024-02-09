@@ -12,7 +12,10 @@ import selectJob from "../Job/Functions/selectJob";
  */
 
 async function StartJourney() : Promise<Hero> {
-    let prepareHero: BeginHero = {} as BeginHero;
+    let prepareHero: BeginHero = {
+        name: ''
+    } as BeginHero;
+    let repose: boolean = true
 
     const question = {
       type: 'input',
@@ -27,14 +30,16 @@ async function StartJourney() : Promise<Hero> {
         choices: ['Mage', 'Warrior', 'Priest']
     };
 
-    let _answer: {username: string} = await prompt(question); 
+    while (repose) {
+        let _answer: {username: string} = await prompt(question);
+        if (_answer.username.length > 0) {
+            repose = false
+            prepareHero.name = _answer.username
+        }
+    }
 
     let _answer2: {job: string} = await prompt(jobQuestion);
-
-    prepareHero = {
-        name: _answer.username,
-        job: selectJob(_answer2.job)
-    };
+    prepareHero.job = selectJob(_answer2.job);
 
     return new Hero(prepareHero.name, prepareHero.job);
 }
