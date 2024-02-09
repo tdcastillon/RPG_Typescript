@@ -30,12 +30,16 @@ class Job {
         return this.name;
     }
 
-    getStats(name: keyof Stats): number {
-        return this.stats.getProperty(name);
+    getAllStats(): Stats {
+        return this.stats;
     }
 
-    levelUp(new_level: number) {
-        this.stats.levelUp(new_level, this.multiplier, this.based_stats);
+    getBasedStats(): Stats {
+        return this.based_stats;
+    }
+
+    getMultiplier(): number {
+        return this.multiplier;
     }
 }
 
