@@ -10,7 +10,7 @@ class Warrior extends Job {
             MP: 20,
             MAX_MP: 20,
             ATK: 10,
-            DEF: 10,
+            DEF: 5,
             MAT: 5,
             MDF: 5,
             EXP: 0,
