@@ -1,6 +1,8 @@
 import Stats from "../../Stats/Stats";
 import InitStats from "../../Stats/InitStats";
 import Job from "./Job";
+import SkillRequire from "../../Interfaces/skillRequire";
+import Fireball from "../../Skills/Skills/Damage/FireballSkill";
 
 class Mage extends Job {
 
@@ -21,6 +23,13 @@ class Mage extends Job {
 
     super("Mage", initStats, 0.5);
   }
+
+  skills: Array<SkillRequire> = [
+      {
+        skill: new Fireball(),
+        level: 1
+      }
+  ]
 }
 
 export default Mage;
