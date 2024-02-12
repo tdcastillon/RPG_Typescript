@@ -1,7 +1,7 @@
-import Enemy from "../Enemy/Class/Enemy";
-import GameEntity from "../Game/GameEntity";
-import pressContinue from "../Misc/pressContinue";
-import skillTarget from "./Enum/SkillTarget.enum";
+import Enemy from "../../Enemy/Class/Enemy";
+import GameEntity from "../../Game/GameEntity";
+import pressContinue from "../../Misc/pressContinue";
+import skillTarget from "../Enum/SkillTarget.enum";
 
 import { prompt } from "enquirer";
 
