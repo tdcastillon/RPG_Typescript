@@ -18,13 +18,6 @@ class Combat {
   private async checkEndFight(): Promise<boolean> {
     let x = 0;
     console.log(this._enemyParty)
-    this._enemyParty.forEach(async (enemy: Enemy) => {
-      if (enemy.getStats().getProperty("HP") <= 0) {
-        console.log(`${enemy.getName()} is dead`);
-        await waitTime(.5)
-      }
-      x++;
-    });
     this._enemyParty = this._enemyParty.filter(
       (enemy: Enemy) => enemy.getStats().getProperty("HP") > 0
     );
@@ -44,10 +37,7 @@ class Combat {
                 console.log(`${this._party[i].hero.getName()} at position ${x} is dead`);
             x++;
         }
-        if (x > 0)
-            return false;
-        else
-            return true;
+        return x <= 0;
     }
     return false;
   }
@@ -58,10 +48,14 @@ class Combat {
       let enemyParty: Array<Enemy> = this._enemyParty as Array<Enemy>;
 
       for (let i = 0; i < party.length; i++) {
-        if (party[i].hero.getStats().getProperty("HP") > 0)
-            this.fightEnded = await playerTurn(i, party, enemyParty);
+        if (party[i].hero.getStats().getProperty("HP") > 0) {
+          this.fightEnded = await playerTurn(i, party, enemyParty)
+          if (this.fightEnded) break;
+          this.fightEnded = await this.checkEndFight();
+          if (this.fightEnded) break;
+        }
       }
-      this.fightEnded = await this.checkEndFight();
+
       if (this.fightEnded) break;
 
       for (let i = 0; i < enemyParty.length; i++)
