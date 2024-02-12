@@ -8,8 +8,8 @@ async function singleCombatScene(party: Party) : Promise<boolean> {
         let enemies: Array<Enemy> = await initSingleFight(party);
 
         let fight: Combat = new Combat(party, enemies);
-        fight.startFight();
-        return true;
+        await fight.startFight();
+        return false;
     } catch (error) {
         throw error; // Promise.reject(error);
     }
