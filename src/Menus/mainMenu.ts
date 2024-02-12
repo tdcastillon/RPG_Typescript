@@ -46,6 +46,7 @@ async function mainMenu(game: Game): Promise<boolean> {
       switch (answer.menu) {
         case "Go to Single Battle":
           let is_dead: boolean = await singleCombatScene(game.Party);
+          if (is_dead) console.log(clc.red("All your party is dead ! Game Over"));
           return is_dead;
         case "Go to the Inn":
           await innMenu(game);
