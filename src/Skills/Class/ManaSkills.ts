@@ -5,7 +5,7 @@ import skillType from '../Enum/SkillType.enum';
 
 class ManaSkills extends Skill {
     constructor(name: string, skillTarget: skillTarget, skillType: skillType, public manaCost: number) {
-        super(name, skillTarget, skillType);
+        super(name, skillTarget, true, skillType);
     }
 
     public getManaCost() : number {

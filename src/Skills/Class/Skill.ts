@@ -6,9 +6,11 @@ import waitTime from "../../Misc/waitTime";
 class Skill {
     public _name: string;
     public description: string = "No description available.";
+    public hasCost: boolean = false;
 
-    constructor(name: string, public skillTarget: skillTarget, public skillType: skillType) {
+    constructor(name: string, public skillTarget: skillTarget, cost = false, public skillType: skillType) {
         this._name = name;
+        this.hasCost = cost;
     }
 
     // methods
@@ -33,6 +35,10 @@ class Skill {
 
     public getDescription() : string {
         return this.description;
+    }
+
+    public getHasCost() : boolean {
+        return this.hasCost;
     }
 
     // Setters
