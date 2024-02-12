@@ -1,10 +1,11 @@
 import Stats from "../../Stats/Stats";
 import InitStats from '../../Stats/InitStats';
+import SkillRequire from "../../Interfaces/skillRequire";
 
 class Job {
 
-    private name: string;
-    private stats: Stats = new Stats({
+    private readonly name: string;
+    private readonly stats: Stats = new Stats({
         HP: 0,
         MAX_HP: 0,
         MP: 0,
@@ -18,6 +19,7 @@ class Job {
         LVL: 0,
     } as InitStats);
 
+    protected skills: Array<SkillRequire> = []
     protected based_stats: Stats = this.stats;
 
     constructor(name: string, stats: InitStats, private multiplier: number = 0) {
@@ -41,6 +43,19 @@ class Job {
     getMultiplier(): number {
         return this.multiplier;
     }
+
+    getSkillAvailable() : string[] {
+        let skills: string[] = []
+        for (let i = 0; i < this.skills.length; i++) {
+            skills.push(this.skills[i].skill.getName())
+        }
+        return skills;
+    }
+
+    getSkills() : Array<SkillRequire> {
+        return this.skills;
+    }
+
 }
 
 export default Job;
