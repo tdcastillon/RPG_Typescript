@@ -4,7 +4,7 @@ import clc from "cli-color";
 import GameEntity from "../Game/GameEntity";
 
 class Hero extends GameEntity {
-    _job: Job;
+    public _job: Job;
 
     constructor(name: string, startingJob: Job) {
         super(name, startingJob.getBasedStats(), startingJob.getAllStats());
