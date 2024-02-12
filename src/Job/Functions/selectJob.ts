@@ -1,5 +1,3 @@
-import BeginHero from "../../Interfaces/BeginHero"
-
 import Mage from "../Class/Mage";
 import Warrior from "../Class/Warrior";
 import Priest from "../Class/Priest";
