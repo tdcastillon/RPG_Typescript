@@ -5,6 +5,12 @@ import DB_Enemy_Entry from "../Enemy/Interface/DB_Enemy_Entry";
 import Party from "../Party/Party";
 import getMediumLvParty from "../Party/getMediumLvParty";
 
+/**
+ * @description allow to init only a single fight
+ * @param {Party} party - party of the user
+ * @returns {Array<Enemy>} - returns an array of enemies
+*/
+
 async function initSingleFight(party: Party) : Promise<Array<Enemy>> {
     const lv_medium: number = getMediumLvParty(party);
     const min_lv: number = lv_medium == 1 ? 1 : Math.floor(0.8 * lv_medium);

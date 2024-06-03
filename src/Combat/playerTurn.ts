@@ -1,19 +1,28 @@
 import clc from "cli-color";
+import {prompt} from "enquirer";
+
 import Enemy from "../Enemy/Class/Enemy";
 import Party from "../Party/Party";
-
-import {prompt} from "enquirer";
 import Hero from "../Hero/Hero";
 import selectHeroParty from "../Party/selectHeroParty";
-import Attack from "../Skills/Skills/Damage/Attack.Skill";
+
 import selectSkill from "../Job/Functions/selectSkill";
-
 import SkillRequire from "../Interfaces/skillRequire";
+import Attack from "../Skills/Skills/Damage/Attack.Skill";
 import ManaSkills from "../Skills/Class/ManaSkills";
-
 import skillUse from "../Skills/Functions/skillUse";
 
-async function playerTurn(position: number, party: Party, enemyParty: Array<Enemy>): Promise<boolean> {
+import waitTime from "../Misc/waitTime";
+
+/**
+  @description Function to handle the player's turn during a fight
+  @param {number} position - The position of the hero in the party
+  @param {Party} party - The user's party object
+  @param {Array<Enemy>} enemyParty - An array of Enemy objects that corresponds to the enemy's party
+  @returns {[boolean, boolean]} - A tuple containing two booleans. The first boolean indicates whether the fight has finished, and the second boolean indicates whether the user made a mistake during their turn.
+*/
+
+async function playerTurn(position: number, party: Party, enemyParty: Array<Enemy>): Promise<[boolean, boolean]> {
 
   console.clear()
 
@@ -40,34 +49,39 @@ async function playerTurn(position: number, party: Party, enemyParty: Array<Enem
     console.clear()
     switch (res.action) {
       case 'Attack':
+        console.clear()
         let attack = new Attack()
         await skillUse(attack, hero, enemyParty)
-        return false;
+        return [false, true];
       case 'Skill':
+        console.clear()
         let skill: SkillRequire | null = await selectSkill(hero)
-        if (skill) {
+        if (skill !== null) {
           if (skill.skill instanceof ManaSkills) {
             let manaSkill = skill.skill as ManaSkills
             if (manaSkill.getManaCost() > hero.getStats().getProperty("MP")) {
               console.log(clc.red('You don\'t have enough mana to use this skill'))
-              break;
+              await waitTime(2)
+              return [false, false]
             }
           }
           await skillUse(skill.skill, hero, enemyParty)
         } else {
-            console.log(clc.red('There is no skill available'))
+          console.log(clc.red(`You don't have skill yet ! `))
+          await waitTime(1)
+          return [false, false]
         }
-        break;
+        return [false, true]
       case 'Run':
         console.log('You ran away')
-        return true;
+        return [true, true]
       default:
         console.log(clc.red('Invalid action - Not implemented yet'))
-        return true;
+        return [false, false]
     }
   }
 
-  return false;
+  return [false, false];
 }
 
 export default playerTurn;
