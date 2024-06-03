@@ -22,6 +22,8 @@ class Attack extends ManaSkills {
         target.getStats().setProperty("HP", target.getStats().getProperty("HP") - final_damage);
         console.log(user.getName() + " attacked " + target.getName() + " and dealt " + (final_damage > 0 ? (final_damage + " damage.")  :  "no damage."));
         await waitTime(0.5)
+        if (target.getStats().getProperty("HP") <= 0)
+            console.log(target.getName() + " dies from the attack")
         await super.useSkill(user, target);
     }
 }
