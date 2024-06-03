@@ -1,5 +1,10 @@
 import DB_Enemy_Entry from "../Interface/DB_Enemy_Entry";
 
+/**
+ * @description Gets the available entries for the enemies
+ * @param {number} lv_medium - The medium level of the enemies
+ * @returns {Array<DB_Enemy_Entry>} The available entries for the enemies
+*/
 
 function getAvalaibleEnties(lv_medium: number) : Array<DB_Enemy_Entry> {
     const db = require('../db');

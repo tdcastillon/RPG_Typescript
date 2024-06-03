@@ -1,9 +1,18 @@
 import InitStats from "../../Stats/InitStats";
 import Enemy from "./Enemy";
 
+/**
+ * @description Class representing a Slime enemy in the game
+ * @extends Enemy
+ */
 class Slime extends Enemy {
-
+  /**
+   * @description Constructor for the Slime class
+   */
   constructor() {
+
+    // initial stats for a Slime LV 1
+
     let stats: InitStats = {
       HP: 20,
       MAX_HP: 20,
@@ -17,6 +26,7 @@ class Slime extends Enemy {
       FULL_EXP: 10,
       LVL: 1,
     };
+
     super(stats, "Slime", 0.2);
   }
 }

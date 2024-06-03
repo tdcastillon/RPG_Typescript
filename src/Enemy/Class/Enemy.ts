@@ -5,28 +5,62 @@ import clc from "cli-color";
 import InitStats from "../../Stats/InitStats";
 import GameEntity from "../../Game/GameEntity";
 
+/**
+ * @description Class representing an enemy in the game
+ * @extends GameEntity
+ */
 class Enemy extends GameEntity {
-
-
+    /**
+     * @description Constructor for the Enemy class
+     * @param {InitStats} stats - The initial stats for the enemy
+     * @param {string} name - The name of the enemy
+     * @param {number} [multiplier = 0.5] - The multiplier for leveling up (defaults to 0.5)
+     */
     constructor(stats: InitStats, name: string, public multiplier: number = 0.5) {
-        super(name, new Stats(stats), new Stats(stats));
+      super(name, new Stats(stats), new Stats(stats));
     }
-
+  
+    /**
+     * @description Levels up the enemy
+     * @param {number} new_level - The new level for the enemy
+     */
+    
     public levelUp(new_level: number) {
-        this.getStats().levelUp(new_level, this.multiplier, this.getBasedStats());
+      this.getStats().levelUp(new_level, this.multiplier, this.getBasedStats());
     }
-
-    public getName() : string {
-        return clc.red(`${this._name}`);
+  
+    /**
+     * @description Gets the name of the enemy
+     * @returns {string} The name of the enemy, colored red
+     */
+    
+    public getName(): string {
+      return clc.red(`${this._name}`);
     }
-
+  
+    /**
+     * @description Creates a new enemy instance
+     * @param {InitStats} stats - The initial stats for the enemy
+     * @param {string} name - The name of the enemy
+     * @param {number} [multiplier = 0.5] - The multiplier for leveling up (defaults to 0.5)
+     * @returns {Enemy} A new enemy instance
+    */
+    
     public createEnemy(stats: InitStats, name: string, multiplier: number = 0.5): Enemy {
-        return new Enemy(stats, name, multiplier);
+      return new Enemy(stats, name, multiplier);
     }
+  
+    /**
+     * @description Custom inspect method for the enemy
+     * @param {any} depth - The depth of the inspection
+     * @param {any} options - The inspection options
+     * @returns {string} A string representation of the enemy
+    */
 
     [util.inspect.custom](depth: any, options: any) {
-        return clc.red(`${this.getName()}`) + ' of lv ' + clc.red(`${this.getStats().getProperty('LVL')}` + (this.getStats().getProperty('HP') <= 0 ? ' (dead)' : String(this.getStats().getProperty('HP'))) + '\n');
+      return clc.red(`${this.getName()}`) + ' of lv ' + clc.red(`${this.getStats().getProperty('LVL')}` + (this.getStats().getProperty('HP') <= 0 ? ' (dead)' : String(this.getStats().getProperty('HP'))) + '\n');
     }
-}
+
+  }
 
 export default Enemy;
