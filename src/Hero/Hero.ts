@@ -3,25 +3,54 @@ import util from 'util';
 import clc from "cli-color";
 import GameEntity from "../Game/GameEntity";
 
+/**
+ * Class representing a hero in the game
+ * @extends GameEntity
+*/
+
 class Hero extends GameEntity {
+    /**
+     * @description The hero's job
+     * @public
+     */
     public _job: Job;
+  
+    /**
+     * @description Constructor for the Hero class
+     * @param name The hero's name
+     * @param startingJob The hero's starting job
+     */
 
     constructor(name: string, startingJob: Job) {
-        super(name, startingJob.getBasedStats(), startingJob.getAllStats());
-        this._job = startingJob;
-        console.log(`Welcome ` + clc.green(`${this.getName()}`) + ` ! You are a ` + clc.yellow(`${this._job.getName()}`) + `.`);
+      super(name, startingJob.getBasedStats(), startingJob.getAllStats());
+      this._job = startingJob;
+      console.log(`Welcome ` + clc.green(`${this.getName()}`) + ` ! You are a ` + clc.yellow(`${this._job.getName()}`) + `.`);
     }
-
+  
+    /**
+     * @description Custom inspect method for the hero, used for logging and debugging
+     * @param depth The inspect depth
+     * @param options The inspect options
+     * @return A string representation of the hero
+     */
     [util.inspect.custom](depth: any, options: any) {
-        return clc.green(`${this.getName()}`) + ', a ' + clc.yellow(`${this._job.getName()}`) + ' of lv ' + clc.red(`${this.getStats().getProperty('LVL')}`);
+      return clc.green(`${this.getName()}`) + ', a ' + clc.yellow(`${this._job.getName()}`) + ' of lv ' + clc.red(`${this.getStats().getProperty('LVL')}`);
     }
-
+  
+    /**
+     * @description Levels up the hero
+     * @param new_level The new level
+     */
     public levelUp(new_level: number) {
-        this.getStats().levelUp(new_level, this._job.getMultiplier(), this.getBasedStats());
+      this.getStats().levelUp(new_level, this._job.getMultiplier(), this.getBasedStats());
     }
-
-    public getName() : string {
-        return clc.green(`${this._name}`);
+  
+    /**
+     * @description Getter for the hero's name, with green coloring
+     * @return The hero's name
+    */
+    public getName(): string {
+      return clc.green(`${this._name}`);
     }
 }
 
