@@ -4,7 +4,7 @@ import Party from "../Party/Party";
 import { prompt } from "enquirer";
 import getPartyMembers from "../Party/getPartyMembers";
 import Hero from "../Hero/Hero";
-import selectHeroParty from "../Party/selectHeroParty";
+import selectHeroParty from "../Party/selectHeroParty"
 import heroMenu from "./heroMenu";
 
 /**
