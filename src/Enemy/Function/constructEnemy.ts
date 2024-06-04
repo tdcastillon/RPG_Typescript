@@ -2,7 +2,7 @@ import Enemy from "../Class/Enemy";
 import DB_Enemy_Entry from "../Interface/DB_Enemy_Entry";
 
 /**
- * @description Constructs an enemy
+ *  Constructs an enemy
  * @param {DB_Enemy_Entry} enemy_entry - The enemy entry from the database
  * @param {number} enemy_lv - The level of the enemy
  * @param {number} i - The index of the enemy

@@ -4,8 +4,15 @@ import Job from "./Job";
 import SkillRequire from "../../Interfaces/skillRequire";
 import Fireball from "../../Skills/Skills/Damage/FireballSkill";
 
+/**
+ * @descrption Class representing a Mage job.
+ * @extends Job
+ */
 class Mage extends Job {
 
+  /**
+   * Constructor for the Mage class.
+   */
   constructor() {
     let initStats: InitStats = {
       HP: 60,
@@ -24,11 +31,14 @@ class Mage extends Job {
     super("Mage", initStats, 0.5);
   }
 
+  /**
+   * list of skils learn by the mage
+  */
   skills: Array<SkillRequire> = [
-      {
-        skill: new Fireball(),
-        level: 1
-      }
+    {
+      skill: new Fireball(),
+      level: 1
+    }
   ]
 }
 

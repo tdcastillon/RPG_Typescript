@@ -5,19 +5,19 @@ import Stats from "../Stats/Stats";
  */
 class GameEntity {
     /**
-     * @description The entity's name
+     *  The entity's name
      * @public
      */
     public _name: string;
   
     /**
      * @public
-     * @description The entity's base stats
+     *  The entity's base stats
      */
     public _based_stats: Stats;
   
     /**
-     * @description The entity's current stats
+     *  The entity's current stats
      * @public
      */
     public _stats: Stats;

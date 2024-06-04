@@ -7,7 +7,7 @@ import clc from 'cli-color';
  * 
  * @param {Game} game - The game to display the inn menu for
  * @returns {Promise<void>}
- * @description This function will display the inn menu
+ *  This function will display the inn menu
  */
 
 async function innMenu(game: Game) : Promise<void> {

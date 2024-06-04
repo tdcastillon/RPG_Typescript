@@ -5,6 +5,13 @@ import skillTarget from "../Enum/SkillTarget.enum";
 
 import { prompt } from "enquirer";
 
+/**
+ *  Function to select an enemy target
+ * @param {skillTarget} targetNumber - the target number
+ * @param {Array<GameEntity>} targetList - the target list
+ * @returns {Promise<GameEntity | Array<GameEntity> | null>} - the target
+*/
+
 async function enemyTarget(
   targetNumber: skillTarget,
   targetList: Array<GameEntity>

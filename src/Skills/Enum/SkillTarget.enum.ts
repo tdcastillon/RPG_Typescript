@@ -1,3 +1,9 @@
+
+/**
+ * Enum for the target of the skill.
+ * @readonly
+ * @enum {number}
+ */
 enum skillTarget {
     SELF, // 0 - Self Skills are used to target the player,
     SINGLE_ENEMY, // 1 - Single Enemy Skills are used to target a single enemy

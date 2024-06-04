@@ -11,7 +11,7 @@ import heroMenu from "./heroMenu";
  *
  * @param {Party} party - The party to display the menu for
  * @returns {Promise<void>} - A promise that resolves when the menu is done
- * @description This function will display the party menu
+ *  This function will display the party menu
  */
 
 async function partyMenu(party: Party): Promise<void> {

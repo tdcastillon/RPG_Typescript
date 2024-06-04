@@ -6,7 +6,7 @@ import Party from "../Party/Party";
 import getMediumLvParty from "../Party/getMediumLvParty";
 
 /**
- * @description allow to init only a single fight
+ *  allow to init only a single fight
  * @param {Party} party - party of the user
  * @returns {Array<Enemy>} - returns an array of enemies
 */

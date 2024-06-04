@@ -6,12 +6,12 @@ import InitStats from "../../Stats/InitStats";
 import GameEntity from "../../Game/GameEntity";
 
 /**
- * @description Class representing an enemy in the game
+ *  Class representing an enemy in the game
  * @extends GameEntity
  */
 class Enemy extends GameEntity {
     /**
-     * @description Constructor for the Enemy class
+     *  Constructor for the Enemy class
      * @param {InitStats} stats - The initial stats for the enemy
      * @param {string} name - The name of the enemy
      * @param {number} [multiplier = 0.5] - The multiplier for leveling up (defaults to 0.5)
@@ -21,7 +21,7 @@ class Enemy extends GameEntity {
     }
   
     /**
-     * @description Levels up the enemy
+     *  Levels up the enemy
      * @param {number} new_level - The new level for the enemy
      */
     
@@ -30,7 +30,7 @@ class Enemy extends GameEntity {
     }
   
     /**
-     * @description Gets the name of the enemy
+     *  Gets the name of the enemy
      * @returns {string} The name of the enemy, colored red
      */
     
@@ -39,7 +39,7 @@ class Enemy extends GameEntity {
     }
   
     /**
-     * @description Creates a new enemy instance
+     *  Creates a new enemy instance
      * @param {InitStats} stats - The initial stats for the enemy
      * @param {string} name - The name of the enemy
      * @param {number} [multiplier = 0.5] - The multiplier for leveling up (defaults to 0.5)
@@ -51,7 +51,7 @@ class Enemy extends GameEntity {
     }
   
     /**
-     * @description Custom inspect method for the enemy
+     *  Custom inspect method for the enemy
      * @param {any} depth - The depth of the inspection
      * @param {any} options - The inspection options
      * @returns {string} A string representation of the enemy

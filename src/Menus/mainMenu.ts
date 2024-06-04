@@ -13,7 +13,7 @@ import singleCombatScene from "../Scenes/singleCombatScene";
  *
  * @param {Game} game - The game to display the main menu for
  * @returns {Promise<boolean>}
- * @description This function will display the main menu
+ *  This function will display the main menu
  */
 
 async function mainMenu(game: Game): Promise<boolean> {

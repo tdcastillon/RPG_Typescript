@@ -15,7 +15,7 @@ import skillUse from "../Skills/Functions/skillUse";
 import waitTime from "../Misc/waitTime";
 
 /**
-  @description Function to handle the player's turn during a fight
+   Function to handle the player's turn during a fight
   @param {number} position - The position of the hero in the party
   @param {Party} party - The user's party object
   @param {Array<Enemy>} enemyParty - An array of Enemy objects that corresponds to the enemy's party

@@ -10,13 +10,13 @@ import GameEntity from "../Game/GameEntity";
 
 class Hero extends GameEntity {
     /**
-     * @description The hero's job
+     *  The hero's job
      * @public
      */
     public _job: Job;
   
     /**
-     * @description Constructor for the Hero class
+     *  Constructor for the Hero class
      * @param name The hero's name
      * @param startingJob The hero's starting job
      */
@@ -28,7 +28,7 @@ class Hero extends GameEntity {
     }
   
     /**
-     * @description Custom inspect method for the hero, used for logging and debugging
+     *  Custom inspect method for the hero, used for logging and debugging
      * @param depth The inspect depth
      * @param options The inspect options
      * @return A string representation of the hero
@@ -38,7 +38,7 @@ class Hero extends GameEntity {
     }
   
     /**
-     * @description Levels up the hero
+     *  Levels up the hero
      * @param new_level The new level
      */
     public levelUp(new_level: number) {
@@ -46,7 +46,7 @@ class Hero extends GameEntity {
     }
   
     /**
-     * @description Getter for the hero's name, with green coloring
+     *  Getter for the hero's name, with green coloring
      * @return The hero's name
     */
     public getName(): string {

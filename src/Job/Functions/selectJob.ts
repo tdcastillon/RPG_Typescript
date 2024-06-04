@@ -9,7 +9,7 @@ const classes: any = { Mage, Warrior, Priest };
  * 
  * @param job - The job of the hero (Mage, Warrior, Priest)
  * @returns {Job}
- * @description This function will return the job of the hero
+ *  This function will return the job of the hero
  */
 function selectJob(job: string) : Job {
     return new classes[job](job);

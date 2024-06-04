@@ -8,7 +8,7 @@ import Stats from "../Stats/Stats";
  *
  * @param {Hero} hero - The hero to display the stats for
  * @returns {void} - This function does not return anything
- * @description This function will display the stats for the hero
+ *  This function will display the stats for the hero
  */
 
 async function displayStats(hero: Hero): Promise<void> {

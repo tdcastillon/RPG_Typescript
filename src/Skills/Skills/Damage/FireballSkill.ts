@@ -5,11 +5,22 @@ import GameEntity from "../../../Game/GameEntity";
 import clc from "cli-color";
 import waitTime from "../../../Misc/waitTime";
 
+/**
+ *  Class for the Fireball skill
+ * @class Fireball
+ * @extends ManaSkills
+*/
 class Fireball extends ManaSkills {
     constructor() {
         super("Fireball", skillTarget.SINGLE_ENEMY, skillType.OFFENSIVE, 5)
     }
 
+    /**
+     *  Function to use the skill
+     * @param {GameEntity} user - the user of the skill
+     * @param {GameEntity} target - the target of the skill
+     * @returns {Promise<void>} - a promise
+    */
     public async useSkill(user: GameEntity, target: GameEntity): Promise<void> {
         const damage = user.getStats().getProperty("MAT") - target.getStats().getProperty("MDF");
         const high = 1.2 * damage;

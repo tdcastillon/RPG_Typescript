@@ -2,12 +2,12 @@ import InitStats from "../../Stats/InitStats";
 import Enemy from "./Enemy";
 
 /**
- * @description Class representing a Slime enemy in the game
+ *  Class representing a Slime enemy in the game
  * @extends Enemy
  */
 class Slime extends Enemy {
   /**
-   * @description Constructor for the Slime class
+   *  Constructor for the Slime class
    */
   constructor() {
 

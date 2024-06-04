@@ -4,7 +4,6 @@ import { prompt } from "enquirer";
  * @async
  * @returns {Promise<void>}
  */
-
 async function pressContinue(): Promise<void> {
     console.log("Press any key to continue");
     const questions = [

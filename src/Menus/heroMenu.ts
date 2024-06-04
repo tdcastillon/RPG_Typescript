@@ -10,7 +10,7 @@ import displayStats from "../Hero/displayStats";
  * @param {Hero} hero - The hero to display the menu for
  * @param {Party} party - The party the hero is in
  * @returns {Promise<void>} - A promise that resolves when the menu is done
- * @description This function will display the hero menu
+ *  This function will display the hero menu
  */
 
 async function heroMenu(hero: Hero, party: Party): Promise<void> {

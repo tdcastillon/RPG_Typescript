@@ -2,7 +2,7 @@ import Slime from "./Class/Slime";
 import DB_Enemy_Entry from "./Interface/DB_Enemy_Entry";
 
 /**
- * @description Database for the enemies
+ *  Database for the enemies
 */
 
 const enemy_db : Array<DB_Enemy_Entry> = [

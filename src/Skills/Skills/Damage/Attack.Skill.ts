@@ -9,11 +9,22 @@ import skillType from "../../Enum/SkillType.enum";
 import skillTarget from "../../Enum/SkillTarget.enum";
 import waitTime from "../../../Misc/waitTime";
 
+/**
+ *  Class for the Attack skill
+ * @class Attack
+ * @extends ManaSkills
+*/
 class Attack extends ManaSkills {
     constructor() {
         super("Attack", skillTarget.SINGLE_ENEMY, skillType.OFFENSIVE, 0);
     }
 
+    /**
+     *  Function to use the skill
+     * @param {GameEntity} user - the user of the skill
+     * @param {GameEntity} target - the target of the skill
+     * @returns {Promise<void>} - a promise
+    */
     public async useSkill(user: GameEntity, target: GameEntity) : Promise<void> {
         const damage = user.getStats().getProperty("ATK") - target.getStats().getProperty("DEF");
         const high = 1.2 * damage;

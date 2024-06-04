@@ -2,7 +2,7 @@ import mainMenu from "../Menus/mainMenu";
 import Game from "./Game";
 
 /**
- * @description The main game loop for the game
+ *  The main game loop for the game
  * @param {Game} game - The game instance
 */
 

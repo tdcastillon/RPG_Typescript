@@ -1,5 +1,11 @@
 import Party from "./Party";
 
+/**
+ * 
+ * @param {Party} party - The party to get the medium level of
+ * @returns {number} - The medium level of the party
+ *  This function will return the medium level of the party
+*/
 function getMediumLvParty(party: Party): number {
     if (party.length === 1)
         return party[0].hero.getStats().getProperty("LVL");

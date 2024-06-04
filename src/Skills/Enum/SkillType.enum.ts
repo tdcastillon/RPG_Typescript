@@ -1,3 +1,8 @@
+/**
+ * Enum for SkillType
+ * @readonly
+ * @enum {number}
+*/
 enum skillType {
     'OFFENSIVE', // 0 - Offensive Skills are used to deal damage to the enemy
     'BUFFS', // 1 - Buffs are used for Buffs, Debuffs, and other effects

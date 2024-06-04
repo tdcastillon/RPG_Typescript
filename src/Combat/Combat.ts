@@ -6,29 +6,29 @@ import enemyTurn from "./enemyTurn";
 import playerTurn from "./playerTurn";
 
 /**
- * @description Class representing a combat scenario
+ *  Class representing a combat scenario
  */
 class Combat {
   /**
-   * @description The user's party object
+   *  The user's party object
     * @private
   */
   private _party: Party | undefined = undefined;
   
   /**
-   * @description Flag indicating whether the fight has ended
+   *  Flag indicating whether the fight has ended
    * @private
   */
   private _enemyParty: Array<Enemy> = [];
   
   /**
-   * @description Flag indicating whether the fight has ended
+   *  Flag indicating whether the fight has ended
    * @private
   */
   private fightEnded: boolean = false;
 
   /**
-    @description Constructor for the Fight class
+     Constructor for the Fight class
     @param {Party} party - The user's party object
     @param {Array<Enemy>} [enemyParty = []] - An optional array of Enemy objects that corresponds to the enemy's party (defaults to an empty array)
   */
@@ -39,7 +39,7 @@ class Combat {
   }
 
   /**
-   * @description Checks if the fight has ended due to all enemies being defeated
+   *  Checks if the fight has ended due to all enemies being defeated
    * @private
    * @returns {Promise<boolean>} True if the fight has ended, false otherwise
   */
@@ -57,7 +57,7 @@ class Combat {
   }
 
   /**
-   * @description Checks if all heroes in the party are alive
+   *  Checks if all heroes in the party are alive
    * @private
    * @returns {boolean} True if all heroes are dead, false otherwise
   */
@@ -75,7 +75,7 @@ class Combat {
   }
 
   /**
-   * @description Starts the combat scenario
+   *  Starts the combat scenario
    * @public
    * @returns {Promise<void>}
   */
