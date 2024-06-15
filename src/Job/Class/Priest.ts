@@ -1,5 +1,9 @@
+import SkillRequire from '../../Interfaces/skillRequire';
 import InitStats from '../../Stats/InitStats';
 import Job from "./Job";
+
+// Skills
+import Praise from '../../Skills/Skills/Healing/PraiseSkill';
 
 /**
  *  A class representing the Priest job.
@@ -17,8 +21,8 @@ class Priest extends Job {
         MP: 80,
         MAX_MP: 80,
         ATK: 5,
-        DEF: 10,
-        MAT: 10,
+        DEF: 2,
+        MAT: 15,
         MDF: 15,
         EXP: 0,
         FULL_EXP: 25,
@@ -27,6 +31,17 @@ class Priest extends Job {
   
       super("Priest", stats, 0.75);
     }
+
+      /**
+   * list of skils learn by the mage
+  */
+  
+  skills: Array<SkillRequire> = [
+    {
+      skill: new Praise(),
+      level: 1
+    }
+  ]
 }
 
 export default Priest;
