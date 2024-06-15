@@ -29,6 +29,7 @@ async function playerTurn(position: number, party: Party, enemyParty: Array<Enem
   let hero: Hero = selectHeroParty(party, position) as Hero
 
   console.log(`It's ` + clc.green(hero.getName()) + `'s turn`)
+  console.log(`HP : ${hero.getStats().getProperty("HP")}\nMP : ${hero.getStats().getProperty("MP")}\n`)
 
   let turn = true
 
