@@ -7,11 +7,11 @@ import GameLoop from "./Game/GameLoop";
 const main = async () => {
     const game: Game = {
         Party: {
-            length: 0
+            length: 0,
+            money:  0
         },
         Reservees: [],
         GroupInventory: [],
-        money: 0
     };
 
     addHeroParty(await StartJourney(), game.Party);
