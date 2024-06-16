@@ -1,7 +1,9 @@
+import fetchDrops from "../DropSystem/Function/fetchDrops";
 import Enemy from "../Enemy/Class/Enemy";
 import pressContinue from "../Misc/pressContinue";
 import waitTime from "../Misc/waitTime";
 import Party from "../Party/Party";
+import partyLevelUp from "../Party/partyLevelUp";
 import enemyTurn from "./enemyTurn";
 import playerTurn from "./playerTurn";
 
@@ -34,8 +36,28 @@ class Combat {
   */
 
   constructor(party: Party, enemyParty: Array<Enemy> = []) {
-    this._party = party;
+    this._party = party as Party;
     this._enemyParty = enemyParty;
+  }
+
+  /**
+   * Processes the dead enemies
+   * @private
+   * @param {Array<Enemy>} dead_enemies - The array of dead enemies
+   */
+
+  private async processDeadEnemies(dead_enemies: Enemy[], left_enemies: number) {
+
+    let party = this._party as Party;
+
+    for (const enemy of dead_enemies) {
+      console.clear();
+      await partyLevelUp(party, enemy.getStats().getProperty("EXP"));
+      await fetchDrops(enemy, party);
+    }
+
+    if (left_enemies != 0)
+      await pressContinue();
   }
 
   /**
@@ -44,10 +66,20 @@ class Combat {
    * @returns {Promise<boolean>} True if the fight has ended, false otherwise
   */
   private async checkEndFight(): Promise<boolean> {
-    let x = 0;
+
+    let dead_enemies : Enemy[] = []
+
+    this._enemyParty.forEach((enemy: Enemy) => {
+      if (enemy.getStats().getProperty("HP") <= 0) {
+        dead_enemies.push(enemy)
+      }
+    })
+
     this._enemyParty = this._enemyParty.filter(
-      (enemy: Enemy) => enemy.getStats().getProperty("HP") >= 0
+      (enemy: Enemy) => enemy.getStats().getProperty("HP") > 0
     );
+
+    await this.processDeadEnemies(dead_enemies, this._enemyParty.length)
 
     if (this._enemyParty.length == 0) {
       console.log("You won the fight");
@@ -83,13 +115,12 @@ class Combat {
   public async startFight(): Promise<void> {
     while (!this.fightEnded) {
       let party: Party = this._party as Party;
-      let enemyParty: Array<Enemy> = this._enemyParty as Array<Enemy>;
 
       for (let i = 0; i < party.length; i++) {
         if (party[i].hero.getStats().getProperty("HP") > 0) {
           let isTurnEnd = false;
           while (!isTurnEnd)
-            [this.fightEnded, isTurnEnd] = await playerTurn(i, party, enemyParty)
+            [this.fightEnded, isTurnEnd] = await playerTurn(i, party, this._enemyParty as Array<Enemy>)
           if (this.fightEnded) break;
           this.fightEnded = await this.checkEndFight();
           if (this.fightEnded) break;
@@ -98,8 +129,8 @@ class Combat {
 
       if (this.fightEnded) break;
 
-      for (let i = 0; i < enemyParty.length; i++)
-        await enemyTurn(i, enemyParty, party);
+      for (let i = 0; i < this._enemyParty.length; i++)
+        await enemyTurn(i, this._enemyParty as Array<Enemy>, party);
 
       this.fightEnded = this.checkAliveParty();
       if (this.fightEnded) break;
