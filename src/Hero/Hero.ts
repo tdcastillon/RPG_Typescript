@@ -2,6 +2,7 @@ import Job from "../Job/Class/Job";
 import util from 'util';
 import clc from "cli-color";
 import GameEntity from "../Game/GameEntity";
+import waitTime from "../Misc/waitTime";
 
 /**
  * Class representing a hero in the game
@@ -44,6 +45,22 @@ class Hero extends GameEntity {
     public levelUp(new_level: number) {
       this.getStats().levelUp(new_level, this._job.getMultiplier(), this.getBasedStats());
     }
+
+    /**
+     * Gain XP function
+     * @param xp the xp gained by the entity
+    */
+
+    public async gainXP(xp: number){
+      this.getStats().setProperty('EXP', this.getStats().getProperty('EXP') + xp);
+      let full_exp = this.getStats().getProperty('FULL_EXP');
+      if(this.getStats().getProperty('EXP') >= full_exp){
+          this.getStats().setProperty('EXP', this.getStats().getProperty('EXP') - full_exp);
+          this.levelUp(this.getStats().getProperty('LVL') + 1);
+          console.log(`Congratulations ${this.getName()} ! You are now level ${this.getStats().getProperty('LVL')} !`);
+          waitTime(2)
+      }
+  }
   
     /**
      *  Getter for the hero's name, with green coloring
