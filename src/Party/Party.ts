@@ -12,10 +12,15 @@ interface HeroPosition {
 
 /**
  *  Interface for the party
+ * 
+ * @property {HeroPosition} index - The index of the party
+ * @property {number} length - The length of the party
+ * @property {number} money - The money the party has
  */
 interface Party {
     [index: number]: HeroPosition;
     length: number;
+    money: number;
 }
 
 export default Party;
