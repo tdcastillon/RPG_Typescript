@@ -116,7 +116,7 @@ class Combat {
     while (!this.fightEnded) {
       let party: Party = this._party as Party;
 
-      for (let i = 0; i < party.length; i++) {
+      for (let i = 0; i < 4; i++) {
         if (party[i].hero.getStats().getProperty("HP") > 0) {
           let isTurnEnd = false;
           while (!isTurnEnd)
