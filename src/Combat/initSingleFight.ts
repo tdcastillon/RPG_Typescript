@@ -16,7 +16,9 @@ async function initSingleFight(party: Party) : Promise<Array<Enemy>> {
     const min_lv: number = lv_medium == 1 ? 1 : Math.floor(0.8 * lv_medium);
     const max_lv: number = Math.floor(1.2 * lv_medium);
     const min_party: number = Math.max(1, party.length - 1);
-    const max_party: number = party.length + 1;
+    let max_party: number = party.length + 1;
+    if (party.length > 4)
+        max_party = 5;
     const enemy_party: number = Math.floor(Math.random() * (max_party - min_party + 1) + min_party);
 
     let enemies: Array<Enemy> = [];
