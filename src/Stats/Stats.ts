@@ -58,7 +58,7 @@ class Stats {
     */
     levelUp(new_level: number, multiplier: number, based_stats: Stats) {
         this.LVL = new_level;
-        let stats_to_augment = ['HP', 'MAX_HP', 'MP', 'MAX_MP', 'ATK', 'DEF', 'MAT', 'MDF', 'EXP', 'FULL_EXP'];
+        let stats_to_augment = ['HP', 'MAX_HP', 'MP', 'MAX_MP', 'ATK', 'DEF', 'MAT', 'MDF', 'FULL_EXP'];
         stats_to_augment.forEach((stat: string) => {
             (this as any)[stat] = Math.floor(based_stats.getProperty(stat as keyof Stats) * (1 + (new_level - 1) * multiplier));
         });
