@@ -2,8 +2,8 @@ import Hero from "../Hero/Hero";
 
 import { prompt } from 'enquirer';
 
-import BeginHero from "../Interfaces/BeginHero";
 import selectJob from "../Job/Functions/selectJob";
+import beginHero from "../Interfaces/BeginHero";
 
 /**
  *  This function will start the journey of the hero
@@ -11,9 +11,9 @@ import selectJob from "../Job/Functions/selectJob";
  * @async
  */
 async function StartJourney() : Promise<Hero> {
-    let prepareHero: BeginHero = {
+    let prepareHero: beginHero = {
         name: ''
-    } as BeginHero;
+    } as beginHero;
     let repose: boolean = true
 
     const question = {

@@ -5,9 +5,9 @@ import Job from "../Job/Class/Job";
  * @property {string} name - the name of the hero
  * @property {Job} job - the job of the hero
 */
-interface BeginHero {
+interface beginHero {
     name: string;
     job: Job;
 }
 
-export default BeginHero;
+export default beginHero;
