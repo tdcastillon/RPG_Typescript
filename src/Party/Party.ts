@@ -21,6 +21,7 @@ interface Party {
     [index: number]: HeroPosition;
     length: number;
     money: number;
+    inventory: string[]
 }
 
 export default Party;

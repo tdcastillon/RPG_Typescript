@@ -2,15 +2,16 @@ import Game from "../Game/Game";
 
 import { prompt  } from 'enquirer';
 import clc from 'cli-color';
+import Party from "../Party/Party";
 
 /**
  * 
- * @param {Game} game - The game to display the inn menu for
+ * @param {Partt} party - The game to display the inn menu for
  * @returns {Promise<void>}
  *  This function will display the inn menu
  */
 
-async function innMenu(game: Game) : Promise<void> {
+async function innMenu(party: Party) : Promise<void> {
 
     console.clear();
 

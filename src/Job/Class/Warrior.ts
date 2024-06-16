@@ -13,8 +13,8 @@ class Warrior extends Job {
     constructor() {
 
       let stats: InitStats = {
-        HP: 100,
-        MAX_HP: 100,
+        HP: 75,
+        MAX_HP: 75,
         MP: 20,
         MAX_MP: 20,
         ATK: 10,
@@ -22,7 +22,7 @@ class Warrior extends Job {
         MAT: 5,
         MDF: 5,
         EXP: 0,
-        FULL_EXP: 100,
+        FULL_EXP: 5,
         LVL: 1,
       };
       super("Warrior", stats, 0.35);

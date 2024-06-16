@@ -27,8 +27,8 @@ class Attack extends ManaSkills {
     */
     public async useSkill(user: GameEntity, target: GameEntity) : Promise<void> {
         const damage = user.getStats().getProperty("ATK") - target.getStats().getProperty("DEF");
-        const high = 1.2 * damage;
-        const low = 0.8 * damage;
+        const high = 1.1 * damage;
+        const low = 0.9 * damage;
         const final_damage = Math.floor(Math.random() * (high - low) + low);
         target.getStats().setProperty("HP", target.getStats().getProperty("HP") - final_damage);
         console.log(user.getName() + " attacked " + target.getName() + " and dealt " + (final_damage > 0 ? (final_damage + " damage.")  :  "no damage."));

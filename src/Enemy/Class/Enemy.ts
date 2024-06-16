@@ -40,8 +40,10 @@ class Enemy extends GameEntity {
      */
     
     public levelUp(new_level: number) {
-      this._stats.setProperty("EXP", Math.floor(this._stats.getProperty("EXP") * (1 + (new_level - 1) * this.multiplier)));
       this.getStats().levelUp(new_level, this.multiplier, this.getBasedStats());
+      this.getStats().setProperty("HP", this.getStats().getProperty("MAX_HP"))
+      this.getStats().setProperty("MP", this.getStats().getProperty("MAX_MP"))
+      this.getStats().setProperty("EXP", Math.floor(this._stats.getProperty("EXP") * (1 + (new_level - 1) * this.multiplier)));
     }
   
     /**

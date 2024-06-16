@@ -15,8 +15,8 @@ class Mage extends Job {
    */
   constructor() {
     let initStats: InitStats = {
-      HP: 60,
-      MAX_HP: 60,
+      HP: 50,
+      MAX_HP: 50,
       MP: 100,
       MAX_MP: 100,
       ATK: 5,
@@ -24,7 +24,7 @@ class Mage extends Job {
       MAT: 15,
       MDF: 15,
       EXP: 0,
-      FULL_EXP: 100,
+      FULL_EXP: 25,
       LVL: 1,
     };
 

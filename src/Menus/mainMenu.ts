@@ -8,15 +8,16 @@ import displayQuitMessage from "../Misc/displayQuitMessage";
 import innMenu from "./innMenu";
 import partyMenu from "./partyMenu";
 import singleCombatScene from "../Scenes/singleCombatScene";
+import Party from "../Party/Party";
 
 /**
  *
- * @param {Game} game - The game to display the main menu for
+ * @param {Party} party - The game to display the main menu for
  * @returns {Promise<boolean>}
  *  This function will display the main menu
  */
 
-async function mainMenu(game: Game): Promise<boolean> {
+async function mainMenu(party: Party): Promise<boolean> {
   let in_menu = true;
 
   const questions = [
@@ -45,21 +46,21 @@ async function mainMenu(game: Game): Promise<boolean> {
 
       switch (answer.menu) {
         case "Go to Single Battle":
-          let is_dead: boolean = await singleCombatScene(game.Party);
+          let is_dead: boolean = await singleCombatScene(party);
           if (is_dead) console.log(clc.red("All your party is dead ! Game Over"));
           return is_dead;
         case "Go to the Inn":
-          await innMenu(game);
+          await innMenu(party);
           return false;
         case "View Party":
-          await partyMenu(game.Party);
+          await partyMenu(party);
           return false;
         case "Quit":
           displayQuitMessage();
           return true;
         default:
           console.log(clc.red("Not implemented yet"));
-          return true;
+          return false;
       }
     } catch (error) {
       clc.red(error);

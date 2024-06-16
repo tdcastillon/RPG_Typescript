@@ -3,20 +3,20 @@ import Game from "./Game/Game";
 import StartJourney from "./Misc/startJourney";
 import addHeroParty from "./Party/addHeroParty";
 import GameLoop from "./Game/GameLoop";
+import Party from "./Party/Party";
 
 const main = async () => {
-    const game: Game = {
-        Party: {
-            length: 0,
-            money:  0
-        },
-        Reservees: [],
-        GroupInventory: [],
-    };
+    let party : Party = {
+        length: 0,
+        money:  0,
+        inventory: []
+    }
 
-    addHeroParty(await StartJourney(), game.Party);
+    let hero : Hero = await StartJourney()
 
-    GameLoop(game);
+    addHeroParty(hero, party)
+
+    GameLoop(party);
 
 };
 

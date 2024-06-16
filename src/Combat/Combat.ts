@@ -56,7 +56,7 @@ class Combat {
       await fetchDrops(enemy, party);
     }
 
-    if (left_enemies != 0)
+    if ((left_enemies != 0) && (dead_enemies.length != 0))
       await pressContinue();
   }
 

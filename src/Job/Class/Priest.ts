@@ -16,8 +16,8 @@ class Priest extends Job {
      */
     constructor() {
       let stats: InitStats = {
-        HP: 80,
-        MAX_HP: 80,
+        HP: 50,
+        MAX_HP: 50,
         MP: 80,
         MAX_MP: 80,
         ATK: 5,
