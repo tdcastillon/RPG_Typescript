@@ -4,20 +4,34 @@ import util from 'util';
 import clc from "cli-color";
 import InitStats from "../../Stats/InitStats";
 import GameEntity from "../../Game/GameEntity";
+import Drop from "../../DropSystem/Interface/Drops";
 
 /**
  *  Class representing an enemy in the game
  * @extends GameEntity
  */
 class Enemy extends GameEntity {
+
+    private drops: Drop[] = [];
+
     /**
      *  Constructor for the Enemy class
      * @param {InitStats} stats - The initial stats for the enemy
      * @param {string} name - The name of the enemy
      * @param {number} [multiplier = 0.5] - The multiplier for leveling up (defaults to 0.5)
      */
-    constructor(stats: InitStats, name: string, public multiplier: number = 0.5) {
+    constructor(stats: InitStats, name: string, drops: Drop[], public multiplier: number = 0.5) {
       super(name, new Stats(stats), new Stats(stats));
+      this.drops = drops;
+    }
+
+    /**
+     * setDrops - sets the drops of the enemy
+     * @param {Drop[]} drops - The drops of the enemy
+    */
+
+    public setDrops(drops: Drop[]) {
+      this.drops = drops;
     }
   
     /**
@@ -26,6 +40,7 @@ class Enemy extends GameEntity {
      */
     
     public levelUp(new_level: number) {
+      this._stats.setProperty("EXP", Math.floor(this._stats.getProperty("EXP") * (1 + (new_level - 1) * this.multiplier)));
       this.getStats().levelUp(new_level, this.multiplier, this.getBasedStats());
     }
   
@@ -37,6 +52,15 @@ class Enemy extends GameEntity {
     public getName(): string {
       return clc.red(`${this._name}`);
     }
+
+    /**
+     *  Gets the drops of the enemy
+     * @returns {Drop[]} The drops of the enemy
+    */
+
+    public getDrops(): Drop[] {
+      return this.drops;
+    }
   
     /**
      *  Creates a new enemy instance
@@ -46,8 +70,8 @@ class Enemy extends GameEntity {
      * @returns {Enemy} A new enemy instance
     */
     
-    public createEnemy(stats: InitStats, name: string, multiplier: number = 0.5): Enemy {
-      return new Enemy(stats, name, multiplier);
+    public createEnemy(stats: InitStats, name: string,  drops: Drop[], multiplier: number = 0.5): Enemy {
+      return new Enemy(stats, name, drops, multiplier);
     }
   
     /**
@@ -58,7 +82,7 @@ class Enemy extends GameEntity {
     */
 
     [util.inspect.custom](depth: any, options: any) {
-      return clc.red(`${this.getName()}`) + ' of lv ' + clc.red(`${this.getStats().getProperty('LVL')}` + (this.getStats().getProperty('HP') <= 0 ? ' (dead)' : String(this.getStats().getProperty('HP'))) + '\n');
+      return clc.red(`${this.getName()}`) + ' of lv ' + clc.red(`${this.getStats().getProperty('LVL')}` + ' ' + (this.getStats().getProperty('HP') <= 0 ? ' (dead)' : '(' + String(this.getStats().getProperty('HP'))) + ' PV)');
     }
 
   }

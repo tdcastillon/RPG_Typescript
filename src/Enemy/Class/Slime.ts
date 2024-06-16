@@ -1,4 +1,5 @@
 import InitStats from "../../Stats/InitStats";
+import Drop from "../../DropSystem/Interface/Drops";
 import Enemy from "./Enemy";
 
 /**
@@ -27,7 +28,17 @@ class Slime extends Enemy {
       LVL: 1,
     };
 
-    super(stats, "Slime", 0.2);
+    let drops: Drop[] = [
+      {
+        item: "Gold",
+        quantity: 4,
+        chances: 1,
+        level_min: 1,
+        level_max: 99
+      }
+    ]
+
+    super(stats, "Slime", drops, 0.2);
   }
 }
 
