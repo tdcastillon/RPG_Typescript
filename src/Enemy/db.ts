@@ -1,4 +1,4 @@
-import Slime from "./Class/Slime";
+import Slime from "./Enemies/Slime";
 import DB_Enemy_Entry from "./Interface/DB_Enemy_Entry";
 
 /**

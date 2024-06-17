@@ -1,6 +1,6 @@
 import InitStats from "../../Stats/InitStats";
 import Drop from "../../DropSystem/Interface/Drops";
-import Enemy from "./Enemy";
+import Enemy from "../Class/Enemy";
 
 /**
  *  Class representing a Slime enemy in the game
