@@ -1,5 +1,7 @@
+import Item from "../../Items/Class/Item";
+
 interface Drop {
-    item : string;
+    item : "Gold" | Item
     quantity: number;
     chances: number;
     level_min: number;
