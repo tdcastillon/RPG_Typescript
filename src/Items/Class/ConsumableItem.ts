@@ -20,7 +20,7 @@ class ConsumableItem extends Item {
      * @param stat_to_impact 
      */
     constructor(name: string, description: string, value: number, stat_to_impact: keyof Stats, value_to_impact: number) {
-        super(name, description, value)
+        super(name, description, value, true, false)
         this.stat_to_impact = stat_to_impact
         this.value_to_impact = value_to_impact
     }

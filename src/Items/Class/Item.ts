@@ -12,16 +12,26 @@ class Item {
     private value: number = 0
 
     /**
+     * Check if an item is either usable or equipable
+    */
+    private is_usable : boolean = false;
+    private is_equipable : boolean = false;
+
+    /**
      * Constructor for the Item class
      * @param name - the name of the item
      * @param description - the description of the item
      * @param value - the value of the item
+     * @param is_usable - if the item can be use or not
+     * @param is_equipable - if the item can be equiped or not
      */
 
-    constructor(name: string, description: string, value: number) {
+    constructor(name: string, description: string, value: number, is_usable: boolean, is_equipable: boolean) {
         this.name = name
         this.description = description
         this.value = value
+        this.is_usable = is_usable
+        this.is_equipable = is_equipable
     }
 
     /**
@@ -58,6 +68,24 @@ class Item {
 
     public setValue(value: number): void {
         this.value = value
+    }
+
+    /**
+     * Getter for the is_usable property
+     * @returns the is_usable property of the item
+    */
+
+    public getIsUsable() : boolean {
+        return this.is_usable
+    }
+
+    /**
+     * Getter for the is_equipable property
+     * @returns the is_equipable property of the item
+    */
+
+    public getIsEquipable() : boolean {
+        return this.is_equipable
     }
 
     public use(target: GameEntity) : void {}
