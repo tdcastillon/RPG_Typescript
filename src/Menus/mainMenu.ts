@@ -9,6 +9,7 @@ import innMenu from "./innMenu";
 import partyMenu from "./partyMenu";
 import singleCombatScene from "../Scenes/singleCombatScene";
 import Party from "../Party/Party";
+import inventoryMenu from "./inventoryMenu";
 
 /**
  *
@@ -30,7 +31,7 @@ async function mainMenu(party: Party): Promise<boolean> {
         "Go to Dungeon Selection" + clc.red(" (Not Implemented) "),
         "Go to the Inn",
         "Go to the Shop" + clc.red(" (Not Implemented) "),
-        "View Inventory" + clc.red(" (Not Implemented) "),
+        "View Inventory",
         "View Party",
         "Save Menu" + clc.red(" (Not Implemented) "),
         "Quit",
@@ -51,6 +52,9 @@ async function mainMenu(party: Party): Promise<boolean> {
           return is_dead;
         case "Go to the Inn":
           await innMenu(party);
+          return false;
+        case "View Inventory":
+          await inventoryMenu(party)
           return false;
         case "View Party":
           await partyMenu(party);
