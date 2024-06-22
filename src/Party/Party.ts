@@ -1,5 +1,5 @@
 import Hero from "../Hero/Hero";
-import ItemInventory from "../Inventory/interface/ItemInventory";
+import ItemInventory from "../Inventory/Interface/ItemInventory";
 
 /**
  *  Interface for the party
