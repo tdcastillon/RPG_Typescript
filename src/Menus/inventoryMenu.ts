@@ -1,6 +1,8 @@
 import clc from "cli-color"
 import { prompt } from "enquirer"
 import Party from "../Party/Party";
+import displayInventory from "../Inventory/Function/displayInventory";
+import waitTime from "../Misc/waitTime";
 
 /**
  * @param {party} party - the party of the player
@@ -33,7 +35,13 @@ async function inventoryMenu(party: Party): Promise<void> {
 
             switch(answer.menu) {
                 case "View Inventory":
-                    console.log("Not Implemented");
+                    if (party.inventory.length === 0) {
+                        console.log(clc.red("Your inventory is empty!"));
+                        await waitTime(2)
+                        in_menu = false;
+                        break;
+                    } else
+                        await displayInventory(party)
                     break;
                 case "Leave":
                     in_menu = false;
