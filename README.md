@@ -66,4 +66,5 @@ For questions or suggestions, please reach out to the project maintainer:
 
 ---
 
-Thank you for checking out RPG_Typescript! We hope you find it useful and enjoyable. Happy coding!
+Thank you for checking out RPG_Typescript! We hope you find it enjoyable !
+Happy Game !
