@@ -43,17 +43,15 @@ npm start
 This will compile the TypeScript code and start the application.
 This is a game that will be played in your terminal
 
-## Contributing
+## Compile Project ##
 
-Contributions are welcome! Here's how you can help:
+If you want to play the game on a separate window, it's still possible if you are using Windows OS
 
-1. **Fork the repository**
-2. **Create a new branch** (`git checkout -b feature/YourFeature`)
-3. **Commit your changes** (`git commit -m 'Add some feature'`)
-4. **Push to the branch** (`git push origin feature/YourFeature`)
-5. **Open a Pull Request**
+```sh
+npm run compile
+```
 
-Please ensure your code adheres to the existing style guidelines and includes appropriate tests.
+Then launch the RPG.exe that will be created
 
 ## License
 
