@@ -40,7 +40,8 @@ To start the development server and run the RPG, use the following command:
 npm start
 ```
 
-This will compile the TypeScript code and start the application. You can then open your browser and navigate to `http://localhost:3000` to see the game in action.
+This will compile the TypeScript code and start the application.
+This is a game that will be played in your terminal
 
 ## Contributing
 
