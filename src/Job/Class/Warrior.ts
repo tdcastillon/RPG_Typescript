@@ -22,7 +22,7 @@ class Warrior extends Job {
         MAT: 5,
         MDF: 5,
         EXP: 0,
-        FULL_EXP: 5,
+        FULL_EXP: 25,
         LVL: 1,
       };
       super("Warrior", stats, 0.35);
