@@ -74,7 +74,7 @@ class Combat {
         dead_enemies.push(enemy)
       }
     })
-
+  
     this._enemyParty = this._enemyParty.filter(
       (enemy: Enemy) => enemy.getStats().getProperty("HP") > 0
     );
@@ -113,29 +113,37 @@ class Combat {
   */
 
   public async startFight(): Promise<void> {
-    while (!this.fightEnded) {
-      let party: Party = this._party as Party;
+    try {
+      while (!this.fightEnded) {
+        let party: Party = this._party as Party;
+        
+        let party_length = (party.length > 4) ? 4 : party.length;
 
-      for (let i = 0; i < 4; i++) {
-        if (party[i].hero.getStats().getProperty("HP") > 0) {
-          let isTurnEnd = false;
-          while (!isTurnEnd)
-            [this.fightEnded, isTurnEnd] = await playerTurn(i, party, this._enemyParty as Array<Enemy>)
-          if (this.fightEnded) break;
-          this.fightEnded = await this.checkEndFight();
-          if (this.fightEnded) break;
+        for (let i = 0; i < party_length; i++) {
+          if (party[i].hero.getStats().getProperty("HP") > 0) {
+            let isTurnEnd = false;
+            while (!isTurnEnd)
+              [this.fightEnded, isTurnEnd] = await playerTurn(i, party, this._enemyParty as Array<Enemy>)
+            if (this.fightEnded) break;
+            this.fightEnded = await this.checkEndFight();
+            if (this.fightEnded) break;
+          }
         }
+
+        if (this.fightEnded) break;
+
+        for (let i = 0; i < this._enemyParty.length; i++)
+          await enemyTurn(i, this._enemyParty as Array<Enemy>, party);
+
+        this.fightEnded = this.checkAliveParty();
+        if (this.fightEnded) break;
       }
-
-      if (this.fightEnded) break;
-
-      for (let i = 0; i < this._enemyParty.length; i++)
-        await enemyTurn(i, this._enemyParty as Array<Enemy>, party);
-
-      this.fightEnded = this.checkAliveParty();
-      if (this.fightEnded) break;
+    } catch (e: any) {
+      console.log(e)
+      await pressContinue()
     }
   }
+
 }
 
 export default Combat;
