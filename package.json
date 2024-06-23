@@ -1,10 +1,19 @@
 {
-  "name": "rpg-ts-cli",
+  "name": "rpg_typescript",
   "version": "1.0.0",
   "description": "A simple CLI to create a RPG game",
   "main": "index.js",
   "scripts": {
-    "start": "npx ts-node src/index.ts"
+    "start": "npx ts-node src/index.ts",
+    "compile": "tsc && npx pkg . --output RPG"
+  },
+  "bin": "dist/index.js",
+  "pkg": {
+    "scripts": [],
+    "assets": [],
+    "targets": [
+      "node14-win-x64"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -15,6 +24,7 @@
     "adm-zip": "^0.5.10",
     "cli-color": "^2.0.3",
     "enquirer": "^2.4.1",
+    "pkg": "^5.8.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }

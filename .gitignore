@@ -1,3 +1,16 @@
+
+# Ignore the node_modules directory
 node_modules/
+
+# Ignore the IDE configuration directory
 .vs/
 .idea/
+
+# Ignore the build directory
+build/
+
+# Ignore the dist directory
+dist/
+
+# Ignore the executable created by pkg
+RPG.exe
