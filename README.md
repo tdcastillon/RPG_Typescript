@@ -7,7 +7,7 @@ Welcome to the RPG_Typescript repository! This project is an RPG (Role-Playing G
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
+- [Compile](#compile)
 - [License](#license)
 - [Contact](#contact)
 
@@ -43,7 +43,7 @@ npm start
 This will compile the TypeScript code and start the application.
 This is a game that will be played in your terminal
 
-## Compile Project ##
+## Compile ##
 
 If you want to play the game on a separate window, it's still possible if you are using Windows OS
 
