@@ -132,6 +132,8 @@ class Combat {
 
         if (this.fightEnded) break;
 
+        console.clear()
+
         for (let i = 0; i < this._enemyParty.length; i++)
           await enemyTurn(i, this._enemyParty as Array<Enemy>, party);
 

@@ -12,8 +12,6 @@ import Attack from "../Skills/Skills/Damage/Attack.Skill";
  */
 
 async function enemyTurn(position: number, party: Array<Enemy>, user: Party) : Promise<boolean> {
-    console.clear()
-
     let target = Math.floor(Math.random() * user.length)
 
     let attack = new Attack()
