@@ -40,7 +40,7 @@ class Item {
      */
 
     public getName(): string {
-        return this.name
+        return clc.yellow(this.name)
     }
 
     /**
