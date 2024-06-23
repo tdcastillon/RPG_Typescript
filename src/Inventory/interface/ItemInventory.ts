@@ -1,8 +1,8 @@
 import Item from "../../Items/Class/Item";
 
-interface ItemInventory {
+interface itemInventory {
     item: Item;
     quantity: number;
 }
 
-export default ItemInventory
+export default itemInventory

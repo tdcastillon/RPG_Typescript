@@ -1,9 +1,9 @@
 import clc from "cli-color";
 import GameEntity from "../../Game/GameEntity";
 import Item from "../../Items/Class/Item";
-import ItemInventory from "../Interface/ItemInventory";
+import itemInventory from "../Interface/itemInventory";
 
-function useItem(inventory: Array<ItemInventory>, item: Item, target: GameEntity | null) {
+function useItem(inventory: Array<itemInventory>, item: Item, target: GameEntity | null) {
     let itemIndex = inventory.findIndex((itemInventory) => itemInventory.item.getName() === item.getName());
     if (itemIndex !== -1) {
         if (item.getIsUsable()) {

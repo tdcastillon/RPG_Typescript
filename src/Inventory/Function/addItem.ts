@@ -1,7 +1,7 @@
 import Item from "../../Items/Class/Item";
-import ItemInventory from "../Interface/ItemInventory";
+import itemInventory from "../Interface/itemInventory";
 
-function addItem(inventory: Array<ItemInventory>, item: Item) {
+function addItem(inventory: Array<itemInventory>, item: Item) {
     let itemIndex = inventory.findIndex((itemInventory) => itemInventory.item.getName() === item.getName());
     if (itemIndex !== -1) {
         inventory[itemIndex].quantity++;
