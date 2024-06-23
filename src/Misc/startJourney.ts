@@ -3,7 +3,7 @@ import Hero from "../Hero/Hero";
 import { prompt } from 'enquirer';
 
 import selectJob from "../Job/Functions/selectJob";
-import beginHero from "../Interfaces/BeginHero";
+import beginHero from "../Interfaces/beginHero";
 
 /**
  *  This function will start the journey of the hero
@@ -19,7 +19,8 @@ async function StartJourney() : Promise<Hero> {
     const question = {
       type: 'input',
       name: 'username',
-      message: 'What is your username?'
+      message: 'What is your username?',
+      initial: "Hero"
     };
 
     const jobQuestion = {
