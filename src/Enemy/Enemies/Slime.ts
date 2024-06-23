@@ -1,6 +1,7 @@
 import InitStats from "../../Stats/InitStats";
 import Drop from "../../DropSystem/Interface/Drops";
 import Enemy from "../Class/Enemy";
+import Potion from "../../Items/Items/Potion";
 
 /**
  *  Class representing a Slime enemy in the game
@@ -33,6 +34,13 @@ class Slime extends Enemy {
         item: "Gold",
         quantity: 4,
         chances: 1,
+        level_min: 1,
+        level_max: 99
+      },
+      {
+        item: new Potion(),
+        quantity: 1,
+        chances: 0.5,
         level_min: 1,
         level_max: 99
       }
