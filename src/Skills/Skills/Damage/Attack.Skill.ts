@@ -31,7 +31,7 @@ class Attack extends ManaSkills {
         const low = 0.9 * damage;
         const final_damage = Math.floor(Math.random() * (high - low) + low);
         target.getStats().setProperty("HP", target.getStats().getProperty("HP") - final_damage);
-        console.log(user.getName() + " attacked " + target.getName() + " and dealt " + (final_damage > 0 ? (final_damage + " damage.")  :  "no damage."));
+        console.log(user.getName() + " attacked " + target.getName() + " and dealt " + (final_damage > 0 ? (final_damage + " damage")  :  "no damage") + ".")
         await waitTime(0.5)
         if (target.getStats().getProperty("HP") <= 0)
             console.log(target.getName() + " dies from the attack")
