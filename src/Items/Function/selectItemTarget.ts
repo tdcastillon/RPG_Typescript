@@ -12,7 +12,6 @@ async function selectTargetItem(user: GameEntity, targets: Array<GameEntity>, it
         return undefined
 
     if (item instanceof ConsumableItem){
-        console.log(item.getItemRange())
         switch (item.getItemRange()) {
             case itemRange.SELF:
                 return user
