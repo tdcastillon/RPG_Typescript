@@ -89,11 +89,9 @@ class ConsumableItem extends Item {
             console.log(`${target.getName()} has gained ${this.value_to_impact} ${this.stat_to_impact}`)
         else
             console.log(`${target.getName()} has lost ${this.value_to_impact} ${this.stat_to_impact}`)
-        await waitTime(2)
-        if ((this.stat_to_impact == "HP") && (final_stat <= 0)) {
+        if ((this.stat_to_impact == "HP") && (final_stat <= 0))
             console.log(`${target.getName()} has died!`)
-            await waitTime(2)
-        }
+        await waitTime(2)
     }
 }
 
