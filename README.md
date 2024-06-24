@@ -10,6 +10,7 @@ Welcome to the RPG_Typescript repository! This project is an RPG (Role-Playing G
 - [Compile](#compile)
 - [License](#license)
 - [Contact](#contact)
+- [Version](#version)
 
 ## Features
 
@@ -63,6 +64,11 @@ For questions or suggestions, please reach out to the project maintainer:
 
 - **Name**: TD Castillon
 - **GitHub**: [@tdcastillon](https://github.com/tdcastillon)
+
+## Version
+
+0.1 - Initial version of the game wich contains the basic mechanics of an RPG game
+0.2 - Added the possibility to play the game on a separate window
 
 ---
 
