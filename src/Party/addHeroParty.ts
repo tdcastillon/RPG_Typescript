@@ -14,14 +14,9 @@ function addHeroParty(hero: Hero, party: Party): boolean {
         party.length++;
         return true;
     } else {
-        if (party.length < 4) {
-            party[party.length] = { hero, position: party.length };
-            party.length++;
-            return true;
-        } else {
-            console.log('Party is full');
-            return false;
-        }
+        party[party.length] = { hero, position: party.length };
+        party.length++;
+        return true;
     }
 }
 export default addHeroParty;
