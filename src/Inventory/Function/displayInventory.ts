@@ -5,6 +5,8 @@ import { prompt } from "enquirer";
 import getChoices from "./getChoices";
 import pageInventory from "../Interface/pageInventory";
 import waitTime from "../../Misc/waitTime";
+import findItem from "./findItem";
+import displayItem from "./displayItem";
 
 /**
  * function to create the prompt choices for the user in the "View Inventory" functionality
@@ -66,11 +68,16 @@ async function displayInventory(party: Party) {
                 in_inventory = false;
                 break;
             default:
-                console.log(`You selected ${res.choice.split(' *')[0]}`)
+                let item_name = res.choice.split(' *')[0]
+                let item = findItem(item_name, party.inventory)
+                if (item)
+                    await displayItem(item.item, item.quantity, party)
                 await waitTime(2)
-                in_inventory = false;
                 break;
         }
+
+        if (party.inventory.length === 0)
+            in_inventory = false;
 
         if (actual_page < 0)
             actual_page = 0;
