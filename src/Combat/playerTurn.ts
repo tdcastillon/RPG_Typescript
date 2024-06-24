@@ -14,6 +14,7 @@ import skillUse from "../Skills/Functions/skillUse";
 
 import waitTime from "../Misc/waitTime";
 import handlePlayerChoice from "./handlePlayerChoiceTurn";
+import useItemBattle from "./useItemBattle";
 
 /**
    Function to handle the player's turn during a fight
@@ -63,13 +64,15 @@ async function playerTurn(position: number, party: Party, enemyParty: Array<Enem
             }
           }
           await skillUse(skill.skill, hero, enemyParty)
-        } else {
+          return [false, true]
+        } else
           return [false, false]
-        }
-        return [false, true]
       case 'Run':
         console.log('You ran away')
         return [true, true]
+      case 'Use Item':
+        let isItemUsed  = await useItemBattle(hero, party, enemyParty)
+        return [false, isItemUsed]
       default:
         console.log(clc.red('Invalid action - Not implemented yet'))
         return [false, false]
