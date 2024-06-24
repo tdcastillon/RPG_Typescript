@@ -7,7 +7,7 @@ import skillRequire from "../../Interfaces/skillRequire";
  * Asynchronous function to select a skill for a hero.
  * 
  * @param hero The hero object for which to select a skill.
- * @returns A promise that resolves to the selected skill or null if no skill is available.
+ * @returns A promise that fetch to the selected skill or null if the user goes back.
 */
 async function selectSkill(hero: Hero) : Promise<skillRequire | null> {
     let skills: string[] = hero._job.getSkillAvailable() as string[]

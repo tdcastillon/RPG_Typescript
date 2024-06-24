@@ -13,6 +13,7 @@ import ManaSkills from "../Skills/Class/ManaSkills";
 import skillUse from "../Skills/Functions/skillUse";
 
 import waitTime from "../Misc/waitTime";
+import handlePlayerChoice from "./handlePlayerChoiceTurn";
 
 /**
    Function to handle the player's turn during a fight
@@ -37,12 +38,7 @@ async function playerTurn(position: number, party: Party, enemyParty: Array<Enem
     type: 'select',
     name: 'action',
     message: `It's your turn ! What do you want to do ${hero.getName()} ?`,
-    choices: [
-      'Attack',
-      'Skill',
-      'Use Item (not implemented yet)',
-      'Run'
-    ]
+    choices: handlePlayerChoice(hero, party.inventory)
   };
 
   if (turn) {
@@ -68,8 +64,6 @@ async function playerTurn(position: number, party: Party, enemyParty: Array<Enem
           }
           await skillUse(skill.skill, hero, enemyParty)
         } else {
-          console.log(clc.red(`You don't have skill yet ! `))
-          await waitTime(1)
           return [false, false]
         }
         return [false, true]
