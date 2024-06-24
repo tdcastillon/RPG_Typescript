@@ -82,9 +82,30 @@ class ConsumableItem extends Item {
     */
     public async use(target: GameEntity) : Promise<void> {
 
-        target.getStats().setProperty(this.stat_to_impact, this.value_to_impact)
-        let final_stat = target.getStats().getProperty(this.stat_to_impact)
+        let original_stat = target.getStats().getProperty(this.stat_to_impact)
+        console.log(`${original_stat}`)
+        let final_stat = original_stat + this.value_to_impact
+        console.log(`${final_stat}`)
+        let max_stat = 0;
 
+        switch (this.stat_to_impact) {
+            case "HP":
+                max_stat = target.getStats().getProperty("MAX_HP")
+                if (this.value_to_impact > 0)
+                    final_stat = (final_stat > max_stat) ? max_stat : final_stat
+                else
+                    final_stat = (final_stat < 0) ? 0 : final_stat
+                break;
+            case "MP":
+                max_stat = target.getStats().getProperty("MAX_MP")
+                if (this.value_to_impact > 0)
+                    final_stat = Math.min(final_stat, max_stat)
+                else
+                    final_stat = Math.max(final_stat, 0)
+            default:
+                break;
+        }
+        target.getStats().setProperty(this.stat_to_impact, final_stat)
         if (this.value_to_impact > 0)
             console.log(`${target.getName()} has gained ${this.value_to_impact} ${this.stat_to_impact}`)
         else
