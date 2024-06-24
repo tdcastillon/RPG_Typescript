@@ -1,5 +1,7 @@
 import GameEntity from "../../Game/GameEntity";
+import waitTime from "../../Misc/waitTime";
 import Stats from "../../Stats/Stats";
+import itemRange from "../Enum/itemRange";
 import Item from "./Item";
 
 /**
@@ -12,6 +14,8 @@ class ConsumableItem extends Item {
     private stat_to_impact : keyof Stats;
     private value_to_impact : number =  0
 
+    private item_range : itemRange = itemRange.SELF;
+
     /**
      * Constructor for the StatItem class
      * @param name 
@@ -19,10 +23,11 @@ class ConsumableItem extends Item {
      * @param value 
      * @param stat_to_impact 
      */
-    constructor(name: string, description: string, value: number, stat_to_impact: keyof Stats, value_to_impact: number) {
+    constructor(name: string, description: string, value: number, stat_to_impact: keyof Stats, value_to_impact: number, item_range: itemRange = itemRange.SELF) {
         super(name, description, value, true, false)
         this.stat_to_impact = stat_to_impact
         this.value_to_impact = value_to_impact
+        this.item_range = item_range
     }
 
     // GETTERS & SETTERS
@@ -59,13 +64,24 @@ class ConsumableItem extends Item {
         this.value_to_impact = value_to_impact
     }
 
+    /**
+     * Getter for the item_range property
+     * @returns the item range
+     * @see itemRange
+     */
+
+    public getItemRange(): itemRange {
+        return this.item_range
+    }
+
     // METHODS
 
     /**
      * Method to apply the stat item to a game entity
      * @param use - the entity to apply the stat item to
     */
-    public use(target: GameEntity) : void {
+    public async use(target: GameEntity) : Promise<void> {
+
         target.getStats().setProperty(this.stat_to_impact, this.value_to_impact)
         let final_stat = target.getStats().getProperty(this.stat_to_impact)
 
@@ -73,9 +89,11 @@ class ConsumableItem extends Item {
             console.log(`${target.getName()} has gained ${this.value_to_impact} ${this.stat_to_impact}`)
         else
             console.log(`${target.getName()} has lost ${this.value_to_impact} ${this.stat_to_impact}`)
-
-        if ((this.stat_to_impact == "HP") && (final_stat <= 0))
+        await waitTime(2)
+        if ((this.stat_to_impact == "HP") && (final_stat <= 0)) {
             console.log(`${target.getName()} has died!`)
+            await waitTime(2)
+        }
     }
 }
 

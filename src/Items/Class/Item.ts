@@ -88,7 +88,7 @@ class Item {
         return this.is_equipable
     }
 
-    public use(target: GameEntity) : void {}
+    public async use(target: GameEntity) : Promise<void> {}
 
     /**
      *  Custom inspect method for the enemy
