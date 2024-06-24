@@ -13,6 +13,14 @@ import skillType from '../Enum/SkillType.enum';
  * @param {number} manaCost - the cost of the skill
 */
 class ManaSkills extends Skill {
+
+    /**
+     * Constructor for the ManaSkills class
+     * @param name The name of the skill
+     * @param skillTarget The target of the skill
+     * @param skillType The type of the skill
+     * @param manaCost The cost of the skill
+    */
     constructor(name: string, skillTarget: skillTarget, skillType: skillType, public manaCost: number) {
         super(name, skillTarget, true, skillType);
     }

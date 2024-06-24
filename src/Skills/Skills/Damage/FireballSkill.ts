@@ -11,8 +11,13 @@ import waitTime from "../../../Misc/waitTime";
  * @extends ManaSkills
 */
 class Fireball extends ManaSkills {
+
+    /**
+     * Constructor for the Fireball skill
+    */
     constructor() {
         super("Fireball", skillTarget.SINGLE_ENEMY, skillType.OFFENSIVE, 5)
+        this.setDescription("Casts a fireball at the enemy.")
     }
 
     /**
