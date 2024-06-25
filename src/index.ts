@@ -1,5 +1,4 @@
 import Hero from "./Hero/Hero";
-import Game from "./Game/Game";
 import StartJourney from "./Misc/startJourney";
 import addHeroParty from "./Party/addHeroParty";
 import GameLoop from "./Game/GameLoop";
@@ -15,7 +14,6 @@ const main = async () => {
     let hero : Hero = await StartJourney()
 
     addHeroParty(hero, party)
-
     GameLoop(party);
 
 };
