@@ -3,8 +3,8 @@
  * @extends ConsumableItem
 */
 
-import ConsumableItem from "../Class/ConsumableItem";
-import itemRange from "../Enum/itemRange";
+import ConsumableItem from "../../Class/ConsumableItem"
+import itemRange from "../../Enum/itemRange";
 
 class Potion extends ConsumableItem {
     /**

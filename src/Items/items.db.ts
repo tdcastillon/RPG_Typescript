@@ -3,7 +3,7 @@
 */
 
 import ItemDB from "./Interface/ItemDB";
-import Potion from "./Items/Potion";
+import Potion from "./Items/ConsumableItem/Potion";
 
 const item_db : Array<ItemDB> = [
     {
