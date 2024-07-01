@@ -171,6 +171,18 @@ class Hero extends GameEntity {
     }
     return true
   }
+
+  public getWeapon() : EquipableItem | null {
+    return this.weapon;
+  }
+
+  public getArmor() : EquipableItem | null {
+    return this.armor;
+  }
+
+  public getAccessories() : (EquipableItem | null)[] {
+    return this.accessories;
+  }
 }
 
 export default Hero;
