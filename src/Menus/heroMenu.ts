@@ -3,7 +3,8 @@ import { prompt } from "enquirer";
 
 import Hero from "../Hero/Hero";
 import Party from "../Party/Party";
-import displayStats from "../Hero/displayStats";
+import displayStats from "../Hero/Stats/displayStats";
+import displayEquipment from "../Hero/Equipment/displayEquipment";
 
 /**
  *
@@ -22,7 +23,7 @@ async function heroMenu(hero: Hero, party: Party): Promise<void> {
       message: "What would you like to do?",
       choices: [
         "View Stats",
-        "View Equipment" + clc.red(" (Not Implemented) "),
+        "View Equipment",
         "View Skills" + clc.red(" (Not Implemented) "),
         "Dismiss" + clc.red(" (Not Implemented) "),
         "Leave",
@@ -45,6 +46,9 @@ async function heroMenu(hero: Hero, party: Party): Promise<void> {
       switch (answer.menu) {
         case "View Stats":
           await displayStats(hero);
+          break;
+        case "View Equipment":
+          await displayEquipment(party, hero)
           break;
         case "Leave":
           in_menu = false;

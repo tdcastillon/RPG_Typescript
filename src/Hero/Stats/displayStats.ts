@@ -1,8 +1,7 @@
 import clc from "cli-color";
-import Hero from "./Hero";
-import { prompt } from "enquirer";
-import pressContinue from "../Misc/pressContinue";
-import Stats from "../Stats/Stats";
+import Hero from "../Hero";
+import pressContinue from "../../Misc/pressContinue";
+import Stats from "../../Stats/Stats";
 
 /**
  *
