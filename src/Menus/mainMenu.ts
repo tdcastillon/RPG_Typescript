@@ -9,7 +9,7 @@ import innMenu from "./innMenu";
 import partyMenu from "./partyMenu";
 import singleCombatScene from "../Scenes/singleCombatScene";
 import Party from "../Party/Party";
-import inventoryMenu from "./inventoryMenu";
+import displayInventory from "../Inventory/Function/displayInventory";
 
 /**
  *
@@ -54,7 +54,7 @@ async function mainMenu(party: Party): Promise<boolean> {
           await innMenu(party);
           return false;
         case "View Inventory":
-          await inventoryMenu(party)
+          await displayInventory(party)
           return false;
         case "View Party":
           await partyMenu(party);

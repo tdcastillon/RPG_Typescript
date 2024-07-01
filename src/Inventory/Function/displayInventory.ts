@@ -12,7 +12,7 @@ import createDisplayInventoryChoices from "./createDisplayInventoryChoices";
  * function to display the inventory of the player
  * 
  * @param {Party} party - the party of the player
- */
+*/
 
 async function displayInventory(party: Party) {
     console.clear();

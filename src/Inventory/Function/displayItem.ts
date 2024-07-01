@@ -6,21 +6,12 @@ import Party from "../../Party/Party";
 import selectTargetItem from "../../Items/Function/selectItemTarget";
 import GameEntity from "../../Game/GameEntity";
 import useItem from "./useItem";
-import pressContinue from "../../Misc/pressContinue";
-import equipHero from "../../Hero/function/equipHero";
-import Hero from "../../Hero/Hero";
-import EquipableItem from "../../Items/Class/EquipableItem";
-import removeItem from "./removeItem";
-import selectTargetEquipment from "./selectTargetEquipment";
 
 function displayChoiceItem(item: Item) : string[] {
     let choices: string[] = []
 
     if (item.getIsUsable())
         choices.push('Use')
-
-    if (item.getIsEquipable())
-        choices.push('Equip')
 
     choices.push('Exit')
 
@@ -67,21 +58,6 @@ async function displayItem(item: Item, quantity: number, party: Party) {
                 if (target_use === undefined)
                     break;
                 useItem(party.inventory, item, target_use)
-                in_item_menu = false;
-                break;
-            case 'Equip':
-                let heroes_equip = await getAllHeroes(party)
-                let target_equip = await selectTargetEquipment(party, item)
-                if (target_equip === undefined)
-                    break;
-                if (!equipHero(target_equip, item as EquipableItem)) {
-                    clc.red("Error while equipping the item")
-                    await waitTime(2)
-                    break;
-                }
-                removeItem(party.inventory, item.getName())
-                clc.green("Item equipped successfully")
-                await waitTime(2)
                 in_item_menu = false;
                 break;
             case 'Exit':
