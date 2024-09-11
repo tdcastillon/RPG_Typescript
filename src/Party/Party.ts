@@ -1,4 +1,5 @@
 import Hero from "../Hero/Hero";
+import Inventory from "../Inventory/Interface/inventory";
 import itemInventory from "../Inventory/Interface/itemInventory";
 
 /**
@@ -17,13 +18,13 @@ interface HeroPosition {
  * @property {HeroPosition} index - The index of the party
  * @property {number} length - The length of the party
  * @property {number} money - The money the party has
- * @property {Array<itemInventory>} inventory - the inventory of the party
+ * @property {Inventory} inventory - the inventory of the party
  */
 interface Party {
     [index: number]: HeroPosition;
     length: number;
     money: number;
-    inventory: Array<itemInventory>
+    inventory: Inventory;
 }
 
 export default Party;

@@ -17,6 +17,7 @@ class EquipableItem extends Item {
 
     private equipment_type: EquipementType = EquipementType.WEAPON;
     private equipment_subtype: armorType | WeaponType | accessoryType = WeaponType.SWORD;
+    private owner: string = "";
 
     private readonly equiment_stats: Stats = new Stats({
         HP: 0,
@@ -49,6 +50,14 @@ class EquipableItem extends Item {
 
     public getEquipmentStats(): Stats {
         return this.equiment_stats;
+    }
+
+    public getOwner(): string {
+        return this.owner;
+    }
+
+    public setOwner(owner: string): void {
+        this.owner = owner;
     }
 }
 

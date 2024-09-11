@@ -55,7 +55,7 @@ async function mainMenu(party: Party): Promise<boolean> {
           await innMenu(party);
           return false;
         case "View Inventory":
-          if (party.inventory.filter((item) => item.item.getIsUsable()).length == 0) {
+          if (party.inventory.items.filter((item) => item.item.getIsUsable()).length == 0) {
             console.clear();
             console.log(clc.red("You don't have any usable items"));
             await pressContinue();

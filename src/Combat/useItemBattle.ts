@@ -35,7 +35,7 @@ function getOptions(actual_page: number, max_page: number, items: pageInventory[
 } 
 
 async function useItemBattle(hero: Hero,party: Party, enemies: Array<Enemy>) : Promise<boolean> {
-    let usableItems = getUsableItems(hero, party.inventory)
+    let usableItems = getUsableItems(hero, party.inventory.items)
     let items : pageInventory[] = sortPagesInventory(usableItems)
 
     let max_page = items[items.length - 1].page
@@ -74,7 +74,7 @@ async function useItemBattle(hero: Hero,party: Party, enemies: Array<Enemy>) : P
             let target: GameEntity | undefined = await selectTargetItem(hero, targets, inventoryItem.item)
             if (target == undefined)
                 return false
-            await useItem(party.inventory, inventoryItem.item, target)
+            await useItem(party.inventory.items, inventoryItem.item, target)
             return true
     }
     return false;

@@ -57,7 +57,7 @@ async function displayItem(item: Item, quantity: number, party: Party) {
                 let target_use = await selectTargetItem(party[0].hero, heroes, item)
                 if (target_use === undefined)
                     break;
-                useItem(party.inventory, item, target_use)
+                useItem(party.inventory.items, item, target_use)
                 in_item_menu = false;
                 break;
             case 'Exit':

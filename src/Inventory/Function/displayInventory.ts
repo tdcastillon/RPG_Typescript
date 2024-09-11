@@ -19,7 +19,7 @@ async function displayInventory(party: Party) {
 
     console.log(clc.blue('Inventory'));
 
-    let inventoryByPages = sortPagesInventory(party.inventory.filter(item => item.item.getIsUsable()))
+    let inventoryByPages = sortPagesInventory(party.inventory.items.filter(item => item.item.getIsUsable()))
 
     let actual_page = 0;
     let page_max = inventoryByPages[inventoryByPages.length - 1].page
@@ -49,14 +49,14 @@ async function displayInventory(party: Party) {
                 break;
             default:
                 let item_name = res.choice.split(' *')[0]
-                let item = findItem(item_name, party.inventory)
+                let item = findItem(item_name, party.inventory.items)
                 if (item)
                     await displayItem(item.item, item.quantity, party)
                 await waitTime(2)
                 break;
         }
 
-        if (party.inventory.length === 0)
+        if (party.inventory.items.length === 0)
             in_inventory = false;
 
         if (actual_page < 0)

@@ -39,7 +39,7 @@ async function playerTurn(position: number, party: Party, enemyParty: Array<Enem
     type: 'select',
     name: 'action',
     message: `It's your turn ! What do you want to do ${hero.getName()} ?`,
-    choices: handlePlayerChoice(hero, party.inventory)
+    choices: handlePlayerChoice(hero, party.inventory.items)
   };
 
   if (turn) {
