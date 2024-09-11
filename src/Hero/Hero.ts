@@ -109,6 +109,11 @@ class Hero extends GameEntity {
     return clc.green(`${this._name}`);
   }
 
+  /**
+   *  Getter for the hero's job, with yellow coloring
+   * @return The hero's job
+  */
+
   getStats(): Stats {
     let job_stats = this._job.getAllStats();
     for (let key in job_stats) {
@@ -118,6 +123,13 @@ class Hero extends GameEntity {
     return this.final_stats;
   }
 
+  // STAT EQUIPMENT FUNCTIONS
+
+  /**
+   * Add stats to the hero when equipping an item
+   * @param equipment The equipment to add the stats from
+   * @return void
+  */
   private addStats(equipment: EquipableItem) {
     let stats = equipment.getEquipmentStats();
     let key: keyof Stats;
@@ -125,6 +137,11 @@ class Hero extends GameEntity {
       this.aditional_stats.setProperty(key, this.aditional_stats.getProperty(key) + stats.getProperty(key));
   }
 
+  /**
+   * Remove stats from the hero when unequipping an item
+   * @param equipment The equipment to remove the stats from
+   * @return void
+  */
   private removeStats(equipment: EquipableItem) {
     let stats = equipment.getEquipmentStats();
     let key: keyof Stats;
@@ -132,12 +149,17 @@ class Hero extends GameEntity {
       this.aditional_stats.setProperty(key, this.aditional_stats.getProperty(key) - stats.getProperty(key));
   }
 
-  public setWeapon(weapon: EquipableItem) : boolean {
+  // EQUIP FUNCTIONS
+
+  private setWeapon(weapon: EquipableItem) : boolean {
     if (weapon.getEquipmentType() == EquipementType.WEAPON) {
-      if (this.weapon != null)
+      if (this.weapon != null) {
         this.removeStats(this.weapon);
+        this.weapon.setOwner("");
+      }
       this.weapon = weapon;
       this.addStats(weapon);
+      this.weapon.setOwner(this.getName());
     } else {
       console.log("This item is not a weapon");
       return false
@@ -145,12 +167,15 @@ class Hero extends GameEntity {
     return true
   }
 
-  public setArmor(armor: EquipableItem) : boolean {
+  private setArmor(armor: EquipableItem) : boolean {
     if (armor.getEquipmentType() == EquipementType.ARMOR) {
-      if (this.armor != null)
+      if (this.armor != null) {
         this.removeStats(this.armor);
+        this.armor.setOwner("");
+      }
       this.armor = armor;
       this.addStats(armor);
+      this.armor.setOwner(this.getName());
     } else {
       console.log("This item is not an armor");
       return false
@@ -158,19 +183,44 @@ class Hero extends GameEntity {
     return true
   }
 
-  public setAccessory(accessory: EquipableItem) : boolean {
+  private setAccessory(accessory: EquipableItem) : boolean {
     if (accessory.getEquipmentType() == EquipementType.ACCESSORY) {
       let type = accessory.getEquipmentSubtype() as accessoryType;
-      if (this.accessories[type] != null)
+      if (this.accessories[type] != null) {
         this.removeStats(this.accessories[type] as EquipableItem)
+        this.accessories[type].setOwner("");
+      }
       this.accessories[type] = accessory;
       this.addStats(accessory);
+      this.accessories[type].setOwner(this.getName());
     } else {
       console.log("This item is not an accessory");
       return false
     }
     return true
   }
+
+  /**
+   * Equip an item to the hero
+   * @param item - The item to equip to the hero
+   * @returns {boolean} - True if the item was equipped, false otherwise
+   */
+
+  public equipItem(item: EquipableItem) : boolean {
+    switch (item.getEquipmentType()) {
+      case EquipementType.WEAPON:
+        return this.setWeapon(item);
+      case EquipementType.ARMOR:
+        return this.setArmor(item);
+      case EquipementType.ACCESSORY:
+        return this.setAccessory(item);
+      default:
+        console.log("This item is not equipable");
+        return false;
+    }
+  }
+
+  // GETTER AND SETTER FOR EQUIPMENT
 
   public getWeapon() : EquipableItem | null {
     return this.weapon;
