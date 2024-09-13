@@ -25,7 +25,7 @@ async function heroMenu(hero: Hero, party: Party): Promise<void> {
         "View Stats",
         "View Equipment",
         "View Skills" + clc.red(" (Not Implemented) "),
-        "Dismiss" + clc.red(" (Not Implemented) "),
+        "Kick" + clc.red(" (Not Implemented) "),
         "Leave",
       ],
     },

@@ -4,6 +4,9 @@ import Hero from "../Hero";
 import { prompt } from "enquirer";
 import askWhichEquipment from "./askWhichEquipment";
 import pressContinue from "../../Misc/pressContinue";
+import displayPossibleChangeEquipment from "./displayPossibleChangeEquipment";
+import EquipementType from "../../Items/Enum/equipementType";
+import choiceAccessoryType from "./choiceSubAccessory";
 
 function displayEquipmentOnly(party: Party, hero: Hero) {
 
@@ -44,8 +47,13 @@ async function displayEquipment(party: Party, hero: Hero) : Promise<void> {
                     let equipment_type = await askWhichEquipment();
                     if (equipment_type === null)
                         display_menu = false;
-                    console.log(equipment_type);
-                    await pressContinue();
+                    if (equipment_type != EquipementType.ACCESSORY) 
+                        await displayPossibleChangeEquipment(equipment_type as EquipementType, party.inventory.equipments, hero);
+                    else {
+                        let subAccessory = await choiceAccessoryType(hero);
+                        console.log(subAccessory);
+                        console.log(clc.red("Not implemented yet"));
+                    }
                     break;
                 case "Back":
                     display_menu = false;
